@@ -1,5 +1,14 @@
 # AI ROASTING Council
 
+<p align="center">
+  <img src="https://img.shields.io/badge/Version-1.0.0-2ea44f" alt="Version 1.0.0">
+  <img src="https://img.shields.io/badge/License-MIT-007ec6" alt="License MIT">
+  <img src="https://img.shields.io/badge/Claude%20Code-Skill-8957e5" alt="Claude Code Skill">
+  <img src="https://img.shields.io/badge/Experts-25%20Verified-e67e22" alt="25 Experts Verified">
+  <img src="https://img.shields.io/badge/Triads-13-e67e22" alt="13 Triads">
+  <img src="https://img.shields.io/badge/Native-Claude%20Code-8957e5" alt="Native Claude Code">
+</p>
+
 소크라테스, 이순신, 드러커, 머스크, 버핏을 한자리에 불러 어려운 결정을 토론에 부치는 도구입니다. `/council` 명령 한 줄이면 25명의 전문가가 서로 다른 자리에서 같은 문제를 바라보고, 부딪치고, 끝내 합의되지 않은 지점을 먼저 알려줍니다.
 
 좋은 결정은 매끄러운 한 줄의 답에서 나오지 않습니다. 서로 반대편에 선 사람들이 같은 문제를 두고 충분히 다툰 뒤에 남는 것, 그 남은 것에서 나옵니다. 이 council은 그 다툼을 구조로 만들어 줍니다.
