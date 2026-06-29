@@ -155,7 +155,8 @@
 
   /* ---------- DOMAIN GROUPS + CARDS ---------- */
   .domain{margin-bottom:30px}
-  .domain-bar{display:flex;align-items:center;gap:14px;margin-bottom:22px;padding:4px 0 16px}
+  .domain-bar{display:flex;align-items:center;gap:14px;margin-bottom:20px;
+    position:sticky;top:0;padding:18px 0 14px;background:linear-gradient(180deg,var(--bg) 60%,transparent);z-index:5}
   .domain-bar .swatch{width:11px;height:11px;border-radius:50%;background:var(--dc);box-shadow:0 0 14px var(--dc)}
   .domain-bar h3{font-size:18px;font-weight:700;letter-spacing:-.02em}
   .domain-bar .den{color:var(--faint);font-size:13px;font-weight:500;letter-spacing:.04em}
@@ -213,8 +214,8 @@
   .mode{border:1px solid var(--line);border-radius:14px;padding:20px;
     background:rgba(255,255,255,.025);transition:.25s}
   .mode:hover{border-color:rgba(255,255,255,.22);background:rgba(255,255,255,.05);transform:translateY(-4px)}
-  .mode code{font-family:var(--sans);font-weight:600;font-size:12.5px;letter-spacing:-.01em;color:var(--c-tech);
-    background:rgba(56,189,248,.12);padding:3px 9px;border-radius:7px;display:inline-block;margin-bottom:12px}
+  .mode code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px;color:var(--c-tech);
+    background:rgba(56,189,248,.1);padding:3px 8px;border-radius:6px;display:inline-block;margin-bottom:12px}
   .mode h4{font-size:15px;font-weight:700;margin-bottom:6px}
   .mode p{font-size:13px;color:var(--muted);line-height:1.5}
 
@@ -247,6 +248,7 @@
       radial-gradient(900px 700px at 50% 108%, rgba(52,211,153,.06), transparent 60%),
       linear-gradient(180deg,#f8f9fc 0%, #eef1f7 60%, #f3f5fa 100%);
   }
+  .page-light .domain-bar{background:linear-gradient(180deg,#f6f7fb 58%,rgba(246,247,251,0))}
   .page-light .card{background:#fff;border-color:rgba(18,21,30,.09);
     box-shadow:0 1px 2px rgba(18,21,30,.04),0 1px 0 rgba(255,255,255,.6) inset}
   .page-light .card .pol{color:var(--muted);border-top-color:var(--line)}
@@ -263,12 +265,6 @@
   .page-light footer{border-top-color:var(--line)}
   .page-light .chip{background:#fff;border-color:var(--line);color:var(--muted)}
   .page-light .foot-bottom{border-top-color:var(--line);color:var(--faint)}
-
-  /* ---------- DARK MODES ZONE + BLACK FOOTER ---------- */
-  .zone-dark{position:relative;z-index:1;
-    background:linear-gradient(180deg,#0a0e1c 0%,#080b16 60%,#070912 100%)}
-  .zone-black{position:relative;z-index:1;background:#04050a;border-top:1px solid rgba(255,255,255,.06)}
-  .zone-black .foot-bottom{border-top-color:rgba(255,255,255,.07)}
 
   @media (prefers-reduced-motion: reduce){
     *{animation:none!important;scroll-behavior:auto!important}
@@ -325,11 +321,7 @@
     </div>
     <div id="domains"></div>
   </section>
-</main>
-</div>
 
-<div class="zone-dark">
-<main class="wrap">
   <section class="block" id="modes">
     <div class="sec-head">
       <div class="sec-eyebrow">HOW IT RUNS</div>
@@ -339,9 +331,8 @@
     <div class="modes" id="modes-grid"></div>
   </section>
 </main>
-</div>
 
-<footer class="zone-black">
+<footer>
   <div class="wrap">
     <div class="foot-grid">
       <div class="foot-tag">좋은 결정은 매끄러운 한 줄에서 나오지 않습니다. 반대편에 선 사람들이 충분히 다툰 뒤 남는 것에서 나옵니다.</div>
@@ -358,6 +349,7 @@
     </div>
   </div>
 </footer>
+</div>
 
 <script>
 const DOMAINS = [
@@ -420,6 +412,7 @@ DOMAINS.forEach((dm,di)=>{
     <div class="domain-bar" style="--dc:${dm.c}">
       <span class="swatch"></span>
       <h3>${dm.name}</h3><span class="den">${dm.en}</span>
+      <span class="count">05 MEMBERS</span>
     </div>
     <div class="cards">${cards}</div>`;
   domWrap.appendChild(grp);

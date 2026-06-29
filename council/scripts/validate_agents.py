@@ -72,7 +72,10 @@ def main():
     # SKILL.md runtime lookup table (Korean name = slug): every slug must be
     # real, and all 25 must appear. This is the table the coordinator dispatches
     # from, so drift here silently breaks --members.
-    table_slugs = set(re.findall(r"[가-힣][가-힣 ]*=([a-z]+(?:-[a-z]+)*)", skill_text))
+    table_line = next(
+        (ln for ln in skill_text.splitlines() if "소크라테스=socrates" in ln), ""
+    )
+    table_slugs = set(re.findall(r"=([a-z]+(?:-[a-z]+)*)", table_line))
     for s in table_slugs - slugs:
         errors.append(f"SKILL.md lookup table maps to unknown slug '{s}'")
     for s in slugs - table_slugs:
