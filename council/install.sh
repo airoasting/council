@@ -72,6 +72,13 @@ done
 echo "Installing /council skill..."
 run_cmd install -m 0644 "${SCRIPT_DIR}/SKILL.md" "${SKILL_DEST}"
 
+if [[ -d "${SCRIPT_DIR}/references" ]]; then
+  run_cmd mkdir -p "${SKILL_DEST_DIR}/references"
+  for ref in "${SCRIPT_DIR}"/references/*.md; do
+    [[ -e "${ref}" ]] && run_cmd install -m 0644 "${ref}" "${SKILL_DEST_DIR}/references/"
+  done
+fi
+
 echo
 echo "Done. Installed ${#agent_files[@]} agents and the /council skill."
 echo "Restart Claude Code, then try:  /council Should we ship this quarter?"

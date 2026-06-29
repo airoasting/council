@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI ROASTING 자문단 — 25인의 거장이 당신의 결정을 로스팅합니다</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+  :root{
+    --bg:#070912;
+    --bg2:#0b0f1f;
+    --ink:#eef1f8;
+    --muted:#9aa3bd;
+    --faint:#626a85;
+    --line:rgba(255,255,255,.08);
+    --c-phil:#a78bfa;
+    --c-strat:#fb7185;
+    --c-mgmt:#fbbf24;
+    --c-tech:#38bdf8;
+    --c-cap:#34d399;
+    --serif:'Fraunces',Georgia,serif;
+    --sans:'Pretendard',system-ui,-apple-system,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--sans);
+    background:var(--bg);
+    color:var(--ink);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  /* layered gradient backdrop */
+  .bg-field{position:fixed;inset:0;z-index:-2;pointer-events:none;
+    background:
+      radial-gradient(1100px 700px at 18% -8%, rgba(124,92,255,.22), transparent 60%),
+      radial-gradient(900px 680px at 88% 6%, rgba(56,189,248,.16), transparent 58%),
+      radial-gradient(1000px 760px at 50% 112%, rgba(52,211,153,.12), transparent 60%),
+      linear-gradient(180deg,#070912 0%, #0a0e1c 45%, #070912 100%);
+  }
+  .bg-grain{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.35;
+    background-image:radial-gradient(rgba(255,255,255,.035) 1px,transparent 1px);
+    background-size:3px 3px;mix-blend-mode:screen;}
+
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+
+  /* ---------- NAV ---------- */
+  nav{position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:18px 32px;transition:background .4s,backdrop-filter .4s,border-color .4s;
+    border-bottom:1px solid transparent;}
+  nav.scrolled{background:rgba(8,10,20,.72);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);}
+  .brand{display:flex;align-items:center;gap:11px;font-weight:700;letter-spacing:-.02em}
+  .brand .mark{width:30px;height:30px;border-radius:9px;position:relative;
+    background:conic-gradient(from 140deg,var(--c-phil),var(--c-tech),var(--c-cap),var(--c-mgmt),var(--c-strat),var(--c-phil));
+    box-shadow:0 0 22px rgba(124,92,255,.5);}
+  .brand .mark::after{content:"";position:absolute;inset:6px;border-radius:5px;background:var(--bg);}
+  .brand b{font-size:15px}
+  .brand span{color:var(--muted);font-weight:500;font-size:13px}
+  .nav-links{display:flex;align-items:center;gap:8px}
+  .nav-links a{font-size:14px;color:var(--muted);padding:8px 13px;border-radius:9px;transition:.2s}
+  .nav-links a:hover{color:var(--ink);background:rgba(255,255,255,.05)}
+  .nav-links a.cta{color:#08101e;background:linear-gradient(180deg,#fff,#d8def0);font-weight:600}
+  .nav-links a.cta:hover{transform:translateY(-1px);box-shadow:0 8px 26px rgba(255,255,255,.14)}
+  @media(max-width:640px){.nav-links a:not(.cta){display:none}}
+
+  /* ---------- HERO ---------- */
+  .hero{min-height:100svh;display:flex;flex-direction:column;align-items:center;
+    padding:104px 20px 30px;position:relative}
+  .hero-copy{text-align:center;max-width:760px;z-index:6;position:relative}
+  .eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:12.5px;letter-spacing:.18em;
+    text-transform:uppercase;color:var(--muted);font-weight:600;
+    border:1px solid var(--line);padding:7px 14px;border-radius:99px;background:rgba(255,255,255,.03)}
+  .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--c-strat);box-shadow:0 0 10px var(--c-strat);animation:blink 2.4s infinite}
+  @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+  h1.title{font-size:clamp(32px,6vw,62px);line-height:1.08;letter-spacing:-.03em;margin:22px 0 0;font-weight:700}
+  h1.title .em{font-family:var(--serif);font-weight:500;font-style:italic;
+    background:linear-gradient(100deg,#fff 10%,var(--c-phil) 55%,var(--c-tech) 90%);
+    -webkit-background-clip:text;background-clip:text;color:transparent}
+  .sub{margin:20px auto 0;max-width:600px;color:var(--muted);font-size:clamp(15px,1.7vw,17px)}
+  .hero-cta{display:flex;gap:12px;justify-content:center;margin-top:30px;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:8px;font-size:14.5px;font-weight:600;
+    padding:13px 22px;border-radius:12px;cursor:pointer;border:1px solid transparent;transition:.22s}
+  .btn.primary{color:#08101e;background:linear-gradient(180deg,#fff,#dfe4f2)}
+  .btn.primary:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(255,255,255,.16)}
+  .btn.ghost{color:var(--ink);border-color:var(--line);background:rgba(255,255,255,.03)}
+  .btn.ghost:hover{border-color:rgba(255,255,255,.28);background:rgba(255,255,255,.07)}
+
+  /* ---------- ATOM STAGE ---------- */
+  .stage{position:relative;width:min(86vw,640px);height:min(86vw,640px);
+    margin-top:8px;flex:0 0 auto}
+  .stage canvas{position:absolute;inset:0;width:100%;height:100%}
+  .nucleus{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+    width:128px;height:128px;border-radius:50%;display:grid;place-content:center;text-align:center;z-index:600;
+    background:radial-gradient(circle at 38% 32%,rgba(255,255,255,.95),rgba(189,201,255,.5) 42%,rgba(124,92,255,.12) 70%,transparent 74%);
+    box-shadow:0 0 60px rgba(124,92,255,.55),0 0 120px rgba(56,189,248,.25),inset 0 0 30px rgba(255,255,255,.4)}
+  .nucleus::before{content:"";position:absolute;inset:-14px;border-radius:50%;border:1px solid rgba(255,255,255,.16);animation:halo 5.5s ease-in-out infinite}
+  .nucleus::after{content:"";position:absolute;inset:-32px;border-radius:50%;border:1px solid rgba(255,255,255,.07);animation:halo 5.5s ease-in-out infinite .8s}
+  @keyframes halo{0%,100%{transform:scale(1);opacity:.8}50%{transform:scale(1.12);opacity:.25}}
+  .nucleus .nlabel{position:relative;z-index:2;color:#0a0d1a;font-weight:700;font-size:13px;letter-spacing:-.01em;line-height:1.25}
+  .nucleus .nlabel small{display:block;font-size:10px;letter-spacing:.16em;color:#3a3f63;font-weight:700;margin-bottom:3px}
+
+  .node{position:absolute;top:0;left:0;display:flex;flex-direction:column;align-items:center;gap:5px;
+    cursor:pointer;will-change:transform;transition:filter .2s}
+  .node .pt{width:12px;height:12px;border-radius:50%;background:var(--nc);
+    box-shadow:0 0 12px var(--nc),0 0 4px #fff inset;border:1.5px solid rgba(255,255,255,.85)}
+  .node .nm{font-size:11.5px;font-weight:600;white-space:nowrap;color:#eaeefb;
+    text-shadow:0 1px 8px rgba(0,0,0,.9);padding:1px 6px;border-radius:6px;letter-spacing:-.01em}
+  .node.hot .pt{width:16px;height:16px;box-shadow:0 0 22px var(--nc),0 0 7px #fff inset}
+  .node.hot .nm{background:var(--nc);color:#080a14;text-shadow:none}
+
+  .caption{min-height:46px;margin-top:14px;text-align:center;z-index:6;position:relative;
+    display:flex;flex-direction:column;gap:3px;align-items:center;transition:.25s}
+  .caption .cap-name{font-size:15px;font-weight:700}
+  .caption .cap-name em{font-family:var(--serif);font-style:italic;font-weight:500;color:var(--muted);margin-left:7px;font-size:14px}
+  .caption .cap-pol{font-size:13.5px;color:var(--muted);max-width:560px}
+  .caption.idle .cap-pol{color:var(--faint)}
+
+  .scroll-hint{margin-top:6px;color:var(--muted);font-size:12px;letter-spacing:.14em;
+    display:flex;flex-direction:column;align-items:center;gap:6px;opacity:.7}
+  .scroll-hint .ch{width:22px;height:34px;border:1.5px solid var(--line);border-radius:12px;position:relative}
+  .scroll-hint .ch::after{content:"";position:absolute;left:50%;top:7px;width:3px;height:7px;border-radius:2px;
+    background:var(--muted);transform:translateX(-50%);animation:wheel 1.8s infinite}
+  @keyframes wheel{0%{opacity:0;transform:translate(-50%,0)}40%{opacity:1}100%{opacity:0;transform:translate(-50%,12px)}}
+
+  /* ---------- SECTION SHELL ---------- */
+  section.block{padding:108px 0;position:relative}
+  .sec-head{max-width:720px;margin-bottom:54px}
+  .sec-eyebrow{font-size:12.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);font-weight:600}
+  .sec-title{font-size:clamp(27px,4vw,42px);line-height:1.12;letter-spacing:-.03em;margin:14px 0 16px;font-weight:700}
+  .sec-title em{font-family:var(--serif);font-style:italic;font-weight:500}
+  .sec-sub{color:var(--muted);font-size:16px;max-width:640px}
+
+  /* ---------- DOMAIN GROUPS + CARDS ---------- */
+  .domain{margin-bottom:30px}
+  .domain-bar{display:flex;align-items:center;gap:14px;margin-bottom:20px;
+    position:sticky;top:0;padding:18px 0 14px;background:linear-gradient(180deg,var(--bg) 60%,transparent);z-index:5}
+  .domain-bar .swatch{width:11px;height:11px;border-radius:50%;background:var(--dc);box-shadow:0 0 14px var(--dc)}
+  .domain-bar h3{font-size:18px;font-weight:700;letter-spacing:-.02em}
+  .domain-bar .den{font-family:var(--serif);font-style:italic;color:var(--muted);font-size:15px;font-weight:500}
+  .domain-bar .count{margin-left:auto;font-size:12px;color:var(--faint);letter-spacing:.12em}
+  .cards{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+  @media(max-width:1000px){.cards{grid-template-columns:repeat(3,1fr)}}
+  @media(max-width:680px){.cards{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:430px){.cards{grid-template-columns:1fr}}
+
+  .card{position:relative;border:1px solid var(--line);border-radius:16px;padding:20px 18px 18px;
+    background:linear-gradient(180deg,rgba(255,255,255,.045),rgba(255,255,255,.012));
+    overflow:hidden;min-height:188px;display:flex;flex-direction:column;
+    opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1),border-color .3s,box-shadow .3s}
+  .card.in{opacity:1;transform:none}
+  .card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--dc);opacity:.85}
+  .card::after{content:"";position:absolute;inset:0;border-radius:16px;pointer-events:none;
+    background:radial-gradient(220px 120px at 80% -10%,color-mix(in srgb,var(--dc) 22%,transparent),transparent 70%);
+    opacity:0;transition:opacity .35s}
+  .card:hover{border-color:color-mix(in srgb,var(--dc) 55%,transparent);transform:translateY(-6px);
+    box-shadow:0 22px 50px rgba(0,0,0,.5),0 0 0 1px color-mix(in srgb,var(--dc) 30%,transparent)}
+  .card:hover::after{opacity:1}
+  .card.flash{animation:flash 1.4s ease}
+  @keyframes flash{0%,100%{box-shadow:0 0 0 1px var(--line)}30%{box-shadow:0 0 0 2px var(--dc),0 0 40px color-mix(in srgb,var(--dc) 45%,transparent)}}
+  .card .idx{font-size:11px;font-weight:700;color:var(--faint);letter-spacing:.1em}
+  .card .en{font-family:var(--serif);font-size:18px;font-weight:500;letter-spacing:-.01em;margin:8px 0 2px;line-height:1.15}
+  .card .kr{font-size:13px;color:var(--muted);font-weight:600}
+  .card .pol{margin-top:auto;padding-top:14px;font-size:12.5px;color:#c4ccdf;line-height:1.5;
+    border-top:1px solid var(--line)}
+
+  /* ---------- MODES ---------- */
+  .modes{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+  @media(max-width:900px){.modes{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:520px){.modes{grid-template-columns:1fr}}
+  .mode{border:1px solid var(--line);border-radius:14px;padding:20px;
+    background:rgba(255,255,255,.025);transition:.25s}
+  .mode:hover{border-color:rgba(255,255,255,.22);background:rgba(255,255,255,.05);transform:translateY(-4px)}
+  .mode code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12.5px;color:var(--c-tech);
+    background:rgba(56,189,248,.1);padding:3px 8px;border-radius:6px;display:inline-block;margin-bottom:12px}
+  .mode h4{font-size:15px;font-weight:700;margin-bottom:6px}
+  .mode p{font-size:13px;color:var(--muted);line-height:1.5}
+
+  /* ---------- FOOTER ---------- */
+  footer{border-top:1px solid var(--line);padding:64px 0 56px;margin-top:40px;position:relative}
+  .foot-grid{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;align-items:flex-end}
+  .foot-tag{font-family:var(--serif);font-style:italic;font-size:clamp(20px,3vw,30px);font-weight:500;max-width:560px;line-height:1.3}
+  .foot-meta{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{font-size:12px;color:var(--muted);border:1px solid var(--line);border-radius:99px;padding:6px 13px;background:rgba(255,255,255,.025)}
+  .foot-bottom{margin-top:40px;padding-top:24px;border-top:1px solid var(--line);
+    display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;color:var(--faint);font-size:12.5px}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none!important;scroll-behavior:auto!important}
+    .card{opacity:1;transform:none}
+  }
+</style>
+</head>
+<body>
+<div class="bg-field"></div>
+<div class="bg-grain"></div>
+
+<nav id="nav">
+  <a class="brand" href="#top"><span class="mark"></span><b>AI ROASTING</b><span>자문단</span></a>
+  <div class="nav-links">
+    <a href="#council">자문단</a>
+    <a href="#modes">토론 모드</a>
+    <a class="cta" href="#council">자문단 만나기</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="hero-copy">
+    <span class="eyebrow"><span class="dot"></span>고개만 끄덕이는 회의는 잊으세요</span>
+    <h1 class="title">25인의 거장이<br>당신의 결정을 <span class="em">로스팅</span>합니다</h1>
+    <p class="sub">소크라테스부터 젠슨 황까지. 서로 반대편에 선 거장들을 한자리에 불러, 같은 문제를 두고 부딪치게 합니다. 매끄러운 한 줄의 답 대신, 충분히 다툰 뒤 남는 것을 드립니다.</p>
+    <div class="hero-cta">
+      <a class="btn primary" href="#council">자문단 만나기</a>
+      <a class="btn ghost" href="#modes">토론 모드 보기</a>
+    </div>
+  </div>
+
+  <div class="stage" id="stage">
+    <canvas id="orbits"></canvas>
+    <div class="nucleus"><span class="nlabel"><small>YOUR</small>나의<br>결정</span></div>
+  </div>
+
+  <div class="caption idle" id="caption">
+    <div class="cap-name">궤도 위의 거장에게 마우스를 올려 보세요</div>
+    <div class="cap-pol">다섯 영역, 다섯 개의 궤도. 각 궤도에 다섯 명의 거장이 당신의 결정 주위를 돕니다.</div>
+  </div>
+
+  <div class="scroll-hint"><div class="ch"></div>SCROLL</div>
+</header>
+
+<main class="wrap">
+  <section class="block" id="council">
+    <div class="sec-head">
+      <div class="sec-eyebrow">THE COUNCIL · 25</div>
+      <h2 class="sec-title">다섯 영역, 스물다섯 개의 <em>렌즈</em></h2>
+      <p class="sec-sub">철학과 프레이밍, 전략과 통치, 경영과 의사결정, 기술과 AI, 자본과 투자. 다섯 영역에 다섯 명씩 두고, 같은 영역 안에서도 서로 다른 렌즈가 부딪치도록 배치했습니다.</p>
+    </div>
+    <div id="domains"></div>
+  </section>
+
+  <section class="block" id="modes">
+    <div class="sec-head">
+      <div class="sec-eyebrow">HOW IT RUNS</div>
+      <h2 class="sec-title">하나의 명령, 다섯 가지 <em>토론 모드</em></h2>
+      <p class="sec-sub">결정의 무게에 맞춰 부르는 사람과 토론의 깊이를 고릅니다.</p>
+    </div>
+    <div class="modes" id="modes-grid"></div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-tag">좋은 결정은 매끄러운 한 줄에서 나오지 않습니다. 반대편에 선 사람들이 충분히 다툰 뒤 남는 것에서 나옵니다.</div>
+      <div class="foot-meta">
+        <span class="chip">25 Experts</span>
+        <span class="chip">5 Domains</span>
+        <span class="chip">13 Triads</span>
+        <span class="chip">Claude Code Skill</span>
+        <span class="chip">MIT License</span>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>AI ROASTING 자문단 · /council</span>
+      <span>소크라테스 · 이순신 · 드러커 · 머스크 · 버핏 외 20인</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const DOMAINS = [
+  {name:'철학과 프레이밍', en:'Philosophy & Framing', c:'#a78bfa'},
+  {name:'전략과 통치, 권력', en:'Strategy & Power', c:'#fb7185'},
+  {name:'경영과 의사결정', en:'Management & Decision', c:'#fbbf24'},
+  {name:'기술과 AI', en:'Technology & AI', c:'#38bdf8'},
+  {name:'자본과 투자', en:'Capital & Investing', c:'#34d399'},
+];
+const PEOPLE = [
+  // d: domain index, kr full, short label, en, polarity(KR)
+  {d:0,kr:'소크라테스',s:'소크라테스',en:'Socrates',p:'무너지지 않는 전제만 남을 때까지 캐묻는다.'},
+  {d:0,kr:'아리스토텔레스',s:'아리스토텔레스',en:'Aristotle',p:'이름이 바로 서야 생각이 바로 선다.'},
+  {d:0,kr:'마르쿠스 아우렐리우스',s:'아우렐리우스',en:'Marcus Aurelius',p:'통제할 수 있는 것만 붙잡고, 의무와 감정을 가른다.'},
+  {d:0,kr:'노자',s:'노자',en:'Lao Tzu',p:'개입이 일을 더 망치는지부터 묻는다.'},
+  {d:0,kr:'알프레드 아들러',s:'아들러',en:'Alfred Adler',p:'원인이 아니라, 향하는 목적이 행동을 정한다.'},
+  {d:1,kr:'손자',s:'손자',en:'Sun Tzu',p:'싸우기 전에 자리를 만들어 이겨 놓고 시작한다.'},
+  {d:1,kr:'클라우제비츠',s:'클라우제비츠',en:'Carl von Clausewitz',p:'계획은 적과 만나는 순간부터 마모된다.'},
+  {d:1,kr:'마키아벨리',s:'마키아벨리',en:'Niccolò Machiavelli',p:'사람을 당위가 아니라 실제 행동으로 읽는다.'},
+  {d:1,kr:'이순신',s:'이순신',en:'Yi Sun-sin',p:'준비한 자가 피할 수 없는 싸움을 이긴다.'},
+  {d:1,kr:'정약용',s:'정약용',en:'Jeong Yak-yong',p:'권력은 가장 약한 자에게 닿을 때만 정당하다.'},
+  {d:2,kr:'피터 드러커',s:'드러커',en:'Peter Drucker',p:'옳은 일을 하는 것이 일을 옳게 하는 것보다 먼저다.'},
+  {d:2,kr:'대니얼 카너먼',s:'카너먼',en:'Daniel Kahneman',p:'가장 먼저 의심할 것은 그 확신, 나의 확신이다.'},
+  {d:2,kr:'나심 탈레브',s:'탈레브',en:'Nassim Taleb',p:'예측의 최적화보다 불확실성 속 생존이 먼저다.'},
+  {d:2,kr:'클레이튼 크리스텐슨',s:'크리스텐슨',en:'Clayton Christensen',p:'기업은 모든 걸 잘했기 때문에 무너진다.'},
+  {d:2,kr:'짐 콜린스',s:'짐 콜린스',en:'Jim Collins',p:'위대함은 상황이 아니라 축적된 규율이 만든다.'},
+  {d:3,kr:'일론 머스크',s:'머스크',en:'Elon Musk',p:'한계는 관습이 아니라 물리다. 원료까지 분해한다.'},
+  {d:3,kr:'샘 알트만',s:'알트만',en:'Sam Altman',p:'세상에 내보내 배우는 자가 앞서 복리로 쌓인다.'},
+  {d:3,kr:'다리오 아모데이',s:'아모데이',en:'Dario Amodei',p:'키울 수 있다고 통제할 수 있는 것은 아니다.'},
+  {d:3,kr:'데미스 하사비스',s:'하사비스',en:'Demis Hassabis',p:'지능은 상업 문제이기 전에 과학 문제다.'},
+  {d:3,kr:'젠슨 황',s:'젠슨 황',en:'Jensen Huang',p:'연산이 새로운 원자재다. 병목이 어디인지 묻는다.'},
+  {d:4,kr:'워런 버핏',s:'버핏',en:'Warren Buffett',p:'검증된 경제성을, 내재가치보다 싸게.'},
+  {d:4,kr:'찰리 멍거',s:'멍거',en:'Charlie Munger',p:'어리석음을 피하고, 좋은 사업을 제정신의 값에.'},
+  {d:4,kr:'캐시 우드',s:'캐시 우드',en:'Cathie Wood',p:'단기 변동성은 장기의 파괴적 혁신을 가린다.'},
+  {d:4,kr:'레이 달리오',s:'레이 달리오',en:'Ray Dalio',p:'상관 없는 여러 베팅이 가장 가까운 공짜 점심이다.'},
+  {d:4,kr:'하워드 막스',s:'하워드 막스',en:'Howard Marks',p:'좋은 자산이 아니라 좋은 가격이 수익을 만든다.'},
+];
+const MODES = [
+  {cmd:'/council', t:'전체 (기본)', d:'세 라운드로 깊게 토론합니다. 결정이 무겁고 의견이 갈릴 때.'},
+  {cmd:'--quick', t:'빠른', d:'두 라운드로 빠르게 읽습니다. 상대적으로 가벼운 결정.'},
+  {cmd:'--duo', t:'듀오', d:'대척점에 선 두 사람만 붙입니다. 하나의 긴장을 파고들 때.'},
+  {cmd:'--triad', t:'트라이어드', d:'문제 유형에 맞춘 세 명을 부릅니다.'},
+  {cmd:'--members', t:'전문가 지정', d:'원하는 인물만 직접 불러 모읍니다.'},
+];
+
+/* ---------- build council cards ---------- */
+const domWrap = document.getElementById('domains');
+DOMAINS.forEach((dm,di)=>{
+  const grp = document.createElement('div');
+  grp.className='domain';
+  grp.style.setProperty('--dc',dm.c);
+  const people = PEOPLE.map((p,i)=>({...p,gi:i})).filter(p=>p.d===di);
+  let cards = people.map(p=>`
+    <article class="card" id="card-${p.gi}" style="--dc:${dm.c}">
+      <div class="idx">${String(p.gi+1).padStart(2,'0')}</div>
+      <div class="en">${p.en}</div>
+      <div class="kr">${p.kr}</div>
+      <div class="pol">${p.p}</div>
+    </article>`).join('');
+  grp.innerHTML=`
+    <div class="domain-bar" style="--dc:${dm.c}">
+      <span class="swatch"></span>
+      <h3>${dm.name}</h3><span class="den">${dm.en}</span>
+      <span class="count">05 MEMBERS</span>
+    </div>
+    <div class="cards">${cards}</div>`;
+  domWrap.appendChild(grp);
+});
+
+/* ---------- modes ---------- */
+document.getElementById('modes-grid').innerHTML = MODES.map(m=>`
+  <div class="mode"><code>${m.cmd}</code><h4>${m.t}</h4><p>${m.d}</p></div>`).join('');
+
+/* ---------- scroll reveal ---------- */
+const io = new IntersectionObserver((es)=>{
+  es.forEach(e=>{ if(e.isIntersecting){
+    const cards=[...e.target.querySelectorAll('.card')];
+    cards.forEach((c,i)=>setTimeout(()=>c.classList.add('in'), i*70));
+    io.unobserve(e.target);
+  }});
+},{threshold:.12});
+document.querySelectorAll('.domain').forEach(d=>io.observe(d));
+
+/* ---------- nav scrolled ---------- */
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>30),{passive:true});
+
+/* ====================================================================
+   ATOM ORBIT
+==================================================================== */
+const stage=document.getElementById('stage');
+const cv=document.getElementById('orbits');
+const ctx=cv.getContext('2d');
+const caption=document.getElementById('caption');
+const capName=caption.querySelector('.cap-name');
+const capPol=caption.querySelector('.cap-pol');
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+// rings: one per domain
+const RINGS = DOMAINS.map((d,i)=>({
+  color:d.color||d.c,
+  c:d.c,
+  rf: 0.94 - i*0.045,                 // radius fraction (outer→inner slightly)
+  phi: 1.16 + (i%2?0.07:-0.05),       // tilt
+  psi: i*(Math.PI/5),                 // screen orientation
+  spd: (i%2?1:-1)*(0.16+i*0.012),     // angular speed
+  phase: i*0.7,
+  people: PEOPLE.map((p,gi)=>({...p,gi})).filter(p=>p.d===i),
+}));
+
+// build node DOM
+const nodes=[];
+RINGS.forEach((ring,ri)=>{
+  ring.people.forEach((p,pi)=>{
+    const el=document.createElement('div');
+    el.className='node';
+    el.style.setProperty('--nc',ring.c);
+    el.innerHTML=`<div class="pt"></div><div class="nm">${p.s}</div>`;
+    el.dataset.gi=p.gi;
+    stage.appendChild(el);
+    nodes.push({el, ring, ri, base:pi*(Math.PI*2/ring.people.length)+ring.phase, p, z:0});
+    el.addEventListener('pointerenter',()=>setHot(p.gi));
+    el.addEventListener('pointerleave',()=>clearHot());
+    el.addEventListener('click',()=>{
+      const card=document.getElementById('card-'+p.gi);
+      card.scrollIntoView({behavior:'smooth',block:'center'});
+      card.classList.remove('flash'); void card.offsetWidth; card.classList.add('flash');
+    });
+  });
+});
+
+let hot=-1;
+function setHot(gi){
+  hot=gi;
+  const p=PEOPLE[gi];
+  caption.classList.remove('idle');
+  capName.innerHTML=`${p.kr}<em>${p.en}</em>`;
+  capPol.textContent=p.p;
+  nodes.forEach(n=>n.el.classList.toggle('hot', +n.el.dataset.gi===gi));
+}
+function clearHot(){
+  hot=-1;
+  caption.classList.add('idle');
+  capName.textContent='궤도 위의 거장에게 마우스를 올려 보세요';
+  capPol.textContent='다섯 영역, 다섯 개의 궤도. 각 궤도에 다섯 명의 거장이 당신의 결정 주위를 돕니다.';
+  nodes.forEach(n=>n.el.classList.remove('hot'));
+}
+
+let W=0,H=0,cx=0,cy=0,baseR=0,dpr=1;
+function resize(){
+  const r=stage.getBoundingClientRect();
+  W=r.width; H=r.height; cx=W/2; cy=H/2;
+  baseR=Math.min(W,H)*0.5;
+  dpr=Math.min(devicePixelRatio||1,2);
+  cv.width=W*dpr; cv.height=H*dpr;
+  ctx.setTransform(dpr,0,0,dpr,0,0);
+}
+addEventListener('resize',resize);
+
+function project(r,theta,phi,psi){
+  let x=r*Math.cos(theta), y=r*Math.sin(theta);
+  let z=y*Math.sin(phi); y=y*Math.cos(phi);
+  let xr=x*Math.cos(psi)-y*Math.sin(psi);
+  let yr=x*Math.sin(psi)+y*Math.cos(psi);
+  return {x:xr,y:yr,z};
+}
+
+function drawOrbit(ring){
+  const r=baseR*ring.rf;
+  ctx.beginPath();
+  for(let a=0;a<=Math.PI*2+0.02;a+=0.08){
+    const q=project(r,a,ring.phi,ring.psi);
+    const px=cx+q.x, py=cy+q.y;
+    a===0?ctx.moveTo(px,py):ctx.lineTo(px,py);
+  }
+  ctx.strokeStyle=hex(ring.c,.10); ctx.lineWidth=7; ctx.stroke();
+  ctx.strokeStyle=hex(ring.c,.42); ctx.lineWidth=1.1; ctx.stroke();
+}
+function hex(c,a){
+  const n=parseInt(c.slice(1),16);
+  return `rgba(${n>>16&255},${n>>8&255},${n&255},${a})`;
+}
+
+let t0=null;
+function frame(ts){
+  if(t0===null)t0=ts;
+  const t=(ts-t0)/1000;
+  ctx.clearRect(0,0,W,H);
+  RINGS.forEach(drawOrbit);
+  const maxZ=baseR;
+  nodes.forEach(n=>{
+    const r=baseR*n.ring.rf;
+    const theta=n.base + n.ring.spd*t;
+    const q=project(r,theta,n.ring.phi,n.ring.psi);
+    const zn=q.z/maxZ;                       // -1..1
+    let s=0.62+(zn+1)/2*0.56;                // 0.62..1.18
+    let op=0.34+(zn+1)/2*0.66;
+    const isHot=+n.el.dataset.gi===hot;
+    if(isHot){s*=1.35;op=1;}
+    n.el.style.transform=`translate(${cx+q.x}px,${cy+q.y}px) translate(-50%,-50%) scale(${s.toFixed(3)})`;
+    n.el.style.opacity=op.toFixed(2);
+    n.el.style.zIndex=isHot?999:Math.round((zn+1)*400);
+  });
+  raf=requestAnimationFrame(frame);
+}
+
+let raf=null;
+function start(){ if(raf===null) raf=requestAnimationFrame(frame); }
+function stop(){ if(raf!==null){cancelAnimationFrame(raf);raf=null;} }
+
+resize();
+if(reduce){
+  // static single frame
+  ctx.clearRect(0,0,W,H);
+  RINGS.forEach(drawOrbit);
+  nodes.forEach(n=>{
+    const r=baseR*n.ring.rf;
+    const q=project(r,n.base,n.ring.phi,n.ring.psi);
+    const zn=q.z/baseR, s=0.7+(zn+1)/2*0.45;
+    n.el.style.transform=`translate(${cx+q.x}px,${cy+q.y}px) translate(-50%,-50%) scale(${s})`;
+    n.el.style.opacity=(0.45+(zn+1)/2*0.55).toFixed(2);
+    n.el.style.zIndex=Math.round((zn+1)*400);
+  });
+}else{
+  // pause when hero offscreen
+  new IntersectionObserver((es)=>{
+    es.forEach(e=> e.isIntersecting?start():stop());
+  },{threshold:0}).observe(document.getElementById('top'));
+  start();
+}
+</script>
+</body>
+</html>
