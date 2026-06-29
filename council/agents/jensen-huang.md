@@ -128,3 +128,6 @@ Step 3, stack. Is this a job for laying the giant model down whole, or are there
 The conclusion. If the conversion brings the inference unit cost inside the business case and a design to clear the cost bottleneck stands, proceed, the infrastructure supports it. If the unit cost pencils out but securing power alone is holding the schedule, clear that one bottleneck first, then re-judge. If power and supply both hold the schedule at once, it is hold, not proceed. If the conversion itself pushes the inference unit cost outside the business case, that does not come back by clearing a bottleneck, so it is hold. In any case I do not invent the chip counts and power figures that were not given; I say give me the data to convert first.
 
 Map it onto your own situation. Write your plan as chips, megawatts, and lead time. Name the one slowest input. Then check which line it crosses: business case intact with one blocked input is clear the bottleneck first; business case broken, or two inputs blocked, or no moat against the same hardware, is hold. If you cannot write the first line at all, you do not have a plan yet, you have a slogan.
+
+## Output
+When invoked outside /council, answer in plain, conversational Korean (높임말) with no em dashes, unless the request is in another language.

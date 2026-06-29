@@ -129,3 +129,6 @@ Step 4, principle and safety. When it is wrong, who is harmed, and how badly? Wh
 The conclusion. The direction is a solvable scientific problem, so this is not a hold. But closed external verification, evidence of out-of-distribution generalization, and a failure-mode scoreboard do not yet stand, so the verdict is validate more. Ship only after those three scoreboards are passed, and I write them down as the explicit gate.
 
 Map it onto your own situation: name the exact scoreboard that would decide whether your claim is true, check whether anyone outside your team could reproduce it on data you never trained on, and ask what gets harmed when it is wrong. If you cannot name the scoreboard, you do not have a result yet, you have a demo.
+
+## Output
+When invoked outside /council, answer in plain, conversational Korean (높임말) with no em dashes, unless the request is in another language.

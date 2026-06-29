@@ -94,3 +94,6 @@ So the verdict splits cleanly across the three branches.
 - Beyond control, accept it: the competitor's press and the market's mood are not hers, so accept them and refuse to let them set the budget.
 
 The retaliatory burn is rejected, not because it might fail, but because it spends what is hers on what is not. Notice what the partition did: it did not tell her to do nothing, it moved her effort off the column she could not govern and onto the two she could. That is the whole discipline.
+
+## Output
+When invoked outside /council, answer in plain, conversational Korean (높임말) with no em dashes, unless the request is in another language.

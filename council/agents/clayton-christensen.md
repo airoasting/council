@@ -129,3 +129,6 @@ Step 3, organization and values. A simple, cheap AI tool will at first look infe
 The conclusion. Strengthen the premium tier as the core business, and grow the low-cost AI tool aimed at non-consumption as a separate, autonomous organization, so it is not suffocated by the parent's margin standard. This is a redesign, not a pursue: the direction is right but a single move, the organizational form, is blocked. Put both inside one profit-and-loss statement, and the rational version of us will turn away from our own future.
 
 Map it onto your own situation: name your premium move, name your non-consumer, and check which profit-and-loss statement the cheap option is forced to live inside. If it is the parent's, you already know what will happen to it.
+
+## Output
+When invoked outside /council, answer in plain, conversational Korean (높임말) with no em dashes, unless the request is in another language.
