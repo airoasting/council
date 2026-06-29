@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI ROASTING 자문단 — 25인의 거장이 당신의 결정을 로스팅합니다</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
 <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <style>
   :root{
@@ -30,10 +33,7 @@
     line-height:1.6;
     -webkit-font-smoothing:antialiased;
     overflow-x:hidden;
-    word-break:keep-all;
-    overflow-wrap:break-word;
   }
-  i,em,.italic{font-style:normal}
   /* layered gradient backdrop */
   .bg-field{position:fixed;inset:0;z-index:-2;pointer-events:none;
     background:
@@ -47,7 +47,7 @@
     background-size:3px 3px;mix-blend-mode:screen;}
 
   a{color:inherit;text-decoration:none}
-  .wrap{max-width:1200px;margin:0 auto;padding:0 28px}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 28px}
 
   /* ---------- NAV ---------- */
   nav{position:fixed;top:0;left:0;right:0;z-index:50;
@@ -72,20 +72,20 @@
   /* ---------- HERO ---------- */
   .hero{min-height:100svh;display:flex;flex-direction:column;align-items:center;
     padding:92px 20px 26px;position:relative;overflow:hidden}
-  .hero-left{display:contents}
-  .hero-copy{order:1;text-align:center;max-width:760px;z-index:6;position:relative}
+  .hero-copy{text-align:center;max-width:760px;z-index:6;position:relative}
+  .hero-copy::before{content:"";position:absolute;inset:-24px -56px;z-index:-1;border-radius:48px;
+    background:radial-gradient(72% 86% at 50% 42%,rgba(7,9,18,.86),rgba(7,9,18,.42) 56%,transparent 82%);}
   .eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:12.5px;letter-spacing:.18em;
     text-transform:uppercase;color:var(--muted);font-weight:600;
     border:1px solid var(--line);padding:7px 14px;border-radius:99px;background:rgba(255,255,255,.03)}
   .eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--c-strat);box-shadow:0 0 10px var(--c-strat);animation:blink 2.4s infinite}
   @keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
   h1.title{font-size:clamp(32px,6vw,62px);line-height:1.08;letter-spacing:-.03em;margin:22px 0 0;font-weight:700;text-shadow:0 2px 34px rgba(4,6,14,.7)}
-  h1.title .em{font-weight:700;
+  h1.title .em{font-family:var(--serif);font-weight:500;font-style:italic;
     background:linear-gradient(100deg,#fff 10%,var(--c-phil) 55%,var(--c-tech) 90%);
     -webkit-background-clip:text;background-clip:text;color:transparent}
   .sub{margin:20px auto 0;max-width:600px;color:var(--muted);font-size:clamp(15px,1.7vw,17px);text-shadow:0 1px 16px rgba(4,6,14,.85)}
-  .hero-foot{order:3;display:flex;flex-direction:column;align-items:center;gap:18px;margin-top:16px;position:relative;z-index:6}
-  .hero-cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .hero-cta{display:flex;gap:12px;justify-content:center;margin-top:30px;flex-wrap:wrap}
   .btn{display:inline-flex;align-items:center;gap:8px;font-size:14.5px;font-weight:600;
     padding:13px 22px;border-radius:12px;cursor:pointer;border:1px solid transparent;transition:.22s}
   .btn.primary{color:#08101e;background:linear-gradient(180deg,#fff,#dfe4f2)}
@@ -94,8 +94,8 @@
   .btn.ghost:hover{border-color:rgba(255,255,255,.28);background:rgba(255,255,255,.07)}
 
   /* ---------- ATOM STAGE ---------- */
-  .stage{order:2;position:relative;width:min(86vw,640px);height:min(86vw,640px);
-    margin-top:8px;flex:0 0 auto;z-index:1;isolation:isolate}
+  .stage{position:relative;width:min(86vw,640px);height:min(86vw,640px);
+    margin-top:8px;flex:0 0 auto}
   .stage canvas{position:absolute;inset:0;width:100%;height:100%}
   .nucleus{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
     width:128px;height:128px;border-radius:50%;display:grid;place-content:center;text-align:center;z-index:600;
@@ -111,37 +111,32 @@
     cursor:pointer;will-change:transform;transition:filter .2s}
   .node .pt{width:12px;height:12px;border-radius:50%;background:var(--nc);
     box-shadow:0 0 12px var(--nc),0 0 4px #fff inset;border:1.5px solid rgba(255,255,255,.85)}
-  .node .nm{display:none;font-size:11.5px;font-weight:600;white-space:nowrap;color:#eaeefb;
+  .node .nm{font-size:11.5px;font-weight:600;white-space:nowrap;color:#eaeefb;
     text-shadow:0 1px 8px rgba(0,0,0,.9);padding:1px 6px;border-radius:6px;letter-spacing:-.01em}
   .node.hot .pt{width:16px;height:16px;box-shadow:0 0 22px var(--nc),0 0 7px #fff inset}
-  .node.hot .nm{display:block;background:var(--nc);color:#080a14;text-shadow:none}
+  .node.hot .nm{background:var(--nc);color:#080a14;text-shadow:none}
 
-  .caption{min-height:46px;text-align:center;z-index:6;position:relative;
+  .caption{min-height:46px;margin-top:14px;text-align:center;z-index:6;position:relative;
     display:flex;flex-direction:column;gap:3px;align-items:center;transition:.25s}
-  .caption .cap-name{font-size:15px;font-weight:700;text-shadow:0 1px 12px rgba(4,6,14,.8)}
-  .caption .cap-pol{font-size:13.5px;color:var(--muted);max-width:560px;text-shadow:0 1px 12px rgba(4,6,14,.8)}
+  .caption .cap-name{font-size:15px;font-weight:700}
+  .caption .cap-name em{font-family:var(--serif);font-style:italic;font-weight:500;color:var(--muted);margin-left:7px;font-size:14px}
+  .caption .cap-pol{font-size:13.5px;color:var(--muted);max-width:560px}
   .caption.idle .cap-pol{color:var(--faint)}
 
-  .scroll-hint{color:var(--muted);font-size:12px;letter-spacing:.14em;
+  .scroll-hint{margin-top:6px;color:var(--muted);font-size:12px;letter-spacing:.14em;
     display:flex;flex-direction:column;align-items:center;gap:6px;opacity:.7}
   .scroll-hint .ch{width:22px;height:34px;border:1.5px solid var(--line);border-radius:12px;position:relative}
   .scroll-hint .ch::after{content:"";position:absolute;left:50%;top:7px;width:3px;height:7px;border-radius:2px;
     background:var(--muted);transform:translateX(-50%);animation:wheel 1.8s infinite}
   @keyframes wheel{0%{opacity:0;transform:translate(-50%,0)}40%{opacity:1}100%{opacity:0;transform:translate(-50%,12px)}}
 
-  /* desktop: split hero — text left, large atom right */
+  /* desktop: full-bleed hero, atom is the centered backdrop, text overlays */
   @media(min-width:768px){
-    .hero{display:grid;grid-template-columns:minmax(340px,0.92fr) minmax(0,1.08fr);
-      align-items:center;gap:clamp(28px,4vw,60px);height:100svh;min-height:640px;
-      padding:64px clamp(30px,5vw,72px) 44px}
-    .hero-left{display:flex;flex-direction:column;justify-content:center;height:100%}
-    .hero-copy{order:1;text-align:left;max-width:none}
-    .hero-copy h1.title{font-size:clamp(34px,4.3vw,55px)}
-    .hero-copy .sub{margin-left:0;margin-right:0;max-width:none}
-    .hero-foot{order:2;align-items:flex-start;margin-top:30px;gap:18px}
-    .hero-foot .caption{text-align:left;align-items:flex-start}
-    .stage{order:0;width:100%;height:min(80vh,680px);max-width:740px;
-      justify-self:center;align-self:center;margin:0}
+    .hero{display:block;height:100svh;min-height:700px;padding:0}
+    .hero-copy{position:absolute;left:50%;top:clamp(82px,10vh,124px);transform:translateX(-50%);width:min(90vw,820px)}
+    .stage{position:absolute;inset:0;width:100%;height:100%;margin:0}
+    .caption{position:absolute;left:50%;bottom:clamp(58px,9vh,94px);transform:translateX(-50%);width:min(90vw,640px);margin:0}
+    .scroll-hint{position:absolute;left:50%;bottom:20px;transform:translateX(-50%);margin:0}
   }
 
   /* ---------- SECTION SHELL ---------- */
@@ -149,8 +144,7 @@
   .sec-head{max-width:720px;margin-bottom:54px}
   .sec-eyebrow{font-size:12.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);font-weight:600}
   .sec-title{font-size:clamp(27px,4vw,42px);line-height:1.12;letter-spacing:-.03em;margin:14px 0 16px;font-weight:700}
-  .sec-title em{font-weight:700;background:linear-gradient(100deg,#fff 20%,var(--c-phil) 92%);
-    -webkit-background-clip:text;background-clip:text;color:transparent}
+  .sec-title em{font-family:var(--serif);font-style:italic;font-weight:500}
   .sec-sub{color:var(--muted);font-size:16px;max-width:640px}
 
   /* ---------- DOMAIN GROUPS + CARDS ---------- */
@@ -159,7 +153,7 @@
     position:sticky;top:0;padding:18px 0 14px;background:linear-gradient(180deg,var(--bg) 60%,transparent);z-index:5}
   .domain-bar .swatch{width:11px;height:11px;border-radius:50%;background:var(--dc);box-shadow:0 0 14px var(--dc)}
   .domain-bar h3{font-size:18px;font-weight:700;letter-spacing:-.02em}
-  .domain-bar .den{color:var(--faint);font-size:13px;font-weight:500;letter-spacing:.04em}
+  .domain-bar .den{font-family:var(--serif);font-style:italic;color:var(--muted);font-size:15px;font-weight:500}
   .domain-bar .count{margin-left:auto;font-size:12px;color:var(--faint);letter-spacing:.12em}
   .cards{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
   @media(max-width:1000px){.cards{grid-template-columns:repeat(3,1fr)}}
@@ -171,6 +165,7 @@
     overflow:hidden;min-height:188px;display:flex;flex-direction:column;
     opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1),border-color .3s,box-shadow .3s}
   .card.in{opacity:1;transform:none}
+  .card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--dc);opacity:.85}
   .card::after{content:"";position:absolute;inset:0;border-radius:16px;pointer-events:none;
     background:radial-gradient(220px 120px at 80% -10%,color-mix(in srgb,var(--dc) 22%,transparent),transparent 70%);
     opacity:0;transition:opacity .35s}
@@ -179,9 +174,10 @@
   .card:hover::after{opacity:1}
   .card.flash{animation:flash 1.4s ease}
   @keyframes flash{0%,100%{box-shadow:0 0 0 1px var(--line)}30%{box-shadow:0 0 0 2px var(--dc),0 0 40px color-mix(in srgb,var(--dc) 45%,transparent)}}
-  .card .idx{font-size:11px;font-weight:700;color:var(--dc);letter-spacing:.1em;opacity:.9}
-  .card .kr-name{font-size:18px;font-weight:700;letter-spacing:-.02em;margin:9px 0 0;line-height:1.2;color:var(--ink)}
-  .card .pol{margin-top:auto;padding-top:14px;font-size:12.5px;color:#c4ccdf;line-height:1.55;
+  .card .idx{font-size:11px;font-weight:700;color:var(--faint);letter-spacing:.1em}
+  .card .en{font-family:var(--serif);font-size:18px;font-weight:500;letter-spacing:-.01em;margin:8px 0 2px;line-height:1.15}
+  .card .kr{font-size:13px;color:var(--muted);font-weight:600}
+  .card .pol{margin-top:auto;padding-top:14px;font-size:12.5px;color:#c4ccdf;line-height:1.5;
     border-top:1px solid var(--line)}
 
   /* ---------- MODES ---------- */
@@ -199,7 +195,7 @@
   /* ---------- FOOTER ---------- */
   footer{border-top:1px solid var(--line);padding:64px 0 56px;margin-top:40px;position:relative}
   .foot-grid{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;align-items:flex-end}
-  .foot-tag{font-size:clamp(20px,3vw,27px);font-weight:600;max-width:560px;line-height:1.4;letter-spacing:-.01em}
+  .foot-tag{font-family:var(--serif);font-style:italic;font-size:clamp(20px,3vw,30px);font-weight:500;max-width:560px;line-height:1.3}
   .foot-meta{display:flex;flex-wrap:wrap;gap:8px}
   .chip{font-size:12px;color:var(--muted);border:1px solid var(--line);border-radius:99px;padding:6px 13px;background:rgba(255,255,255,.025)}
   .foot-bottom{margin-top:40px;padding-top:24px;border-top:1px solid var(--line);
@@ -213,35 +209,6 @@
     .nucleus{width:104px;height:104px}
     .nucleus .nlabel{font-size:12px}
   }
-
-  /* ---------- LIGHT MODE (page 2 onward) ---------- */
-  .page-light{
-    --bg:#f6f7fb; --ink:#13161f; --muted:#5a6172; --faint:#9aa0ae;
-    --line:rgba(18,21,30,.10);
-    position:relative; z-index:1; color:var(--ink);
-    background:
-      radial-gradient(900px 580px at 10% -4%, rgba(124,92,255,.09), transparent 60%),
-      radial-gradient(820px 600px at 96% 3%, rgba(56,189,248,.07), transparent 58%),
-      radial-gradient(900px 700px at 50% 108%, rgba(52,211,153,.06), transparent 60%),
-      linear-gradient(180deg,#f8f9fc 0%, #eef1f7 60%, #f3f5fa 100%);
-  }
-  .page-light .domain-bar{background:linear-gradient(180deg,#f6f7fb 58%,rgba(246,247,251,0))}
-  .page-light .card{background:#fff;border-color:rgba(18,21,30,.09);
-    box-shadow:0 1px 2px rgba(18,21,30,.04),0 1px 0 rgba(255,255,255,.6) inset}
-  .page-light .card .pol{color:var(--muted);border-top-color:var(--line)}
-  .page-light .card:hover{border-color:color-mix(in srgb,var(--dc) 50%,transparent);
-    box-shadow:0 20px 44px rgba(18,21,30,.14),0 0 0 1px color-mix(in srgb,var(--dc) 28%,transparent)}
-  .page-light .card.flash{animation:flashL 1.4s ease}
-  @keyframes flashL{0%,100%{box-shadow:0 1px 2px rgba(18,21,30,.04)}30%{box-shadow:0 0 0 2px var(--dc),0 14px 36px color-mix(in srgb,var(--dc) 40%,transparent)}}
-  .page-light .sec-title em{background:linear-gradient(100deg,#13161f 12%,#6d4dff 92%);
-    -webkit-background-clip:text;background-clip:text;color:transparent}
-  .page-light .mode{background:#fff;border-color:rgba(18,21,30,.09);box-shadow:0 1px 2px rgba(18,21,30,.04)}
-  .page-light .mode:hover{border-color:rgba(18,21,30,.18);background:#fff;box-shadow:0 14px 32px rgba(18,21,30,.1)}
-  .page-light .mode code{background:rgba(11,135,176,.1);color:#0b87b0}
-  .page-light .mode p{color:var(--muted)}
-  .page-light footer{border-top-color:var(--line)}
-  .page-light .chip{background:#fff;border-color:var(--line);color:var(--muted)}
-  .page-light .foot-bottom{border-top-color:var(--line);color:var(--faint)}
 
   @media (prefers-reduced-motion: reduce){
     *{animation:none!important;scroll-behavior:auto!important}
@@ -263,32 +230,29 @@
 </nav>
 
 <header class="hero" id="top">
-  <div class="hero-left">
-    <div class="hero-copy">
-      <span class="eyebrow"><span class="dot"></span>고개만 끄덕이는 회의는 잊으세요</span>
-      <h1 class="title">25인의 거장이<br>당신의 결정을 <span class="em">로스팅</span>합니다</h1>
-      <p class="sub">소크라테스부터 젠슨 황까지. 서로 반대편에 선 거장들을 한자리에 불러, 같은 문제를 두고 부딪치게 합니다. 매끄러운 한 줄의 답 대신, 충분히 다툰 뒤 남는 것을 드립니다.</p>
-    </div>
-    <div class="hero-foot">
-      <div class="caption idle" id="caption">
-        <div class="cap-name">궤도 위의 거장을 만나 보세요</div>
-        <div class="cap-pol">다섯 영역, 다섯 개의 궤도. 각 궤도에 다섯 명의 거장이 당신의 결정 주위를 돕니다.</div>
-      </div>
-      <div class="hero-cta">
-        <a class="btn primary" href="#council">자문단 만나기</a>
-        <a class="btn ghost" href="#modes">토론 모드 보기</a>
-      </div>
-      <div class="scroll-hint"><div class="ch"></div>SCROLL</div>
+  <div class="hero-copy">
+    <span class="eyebrow"><span class="dot"></span>고개만 끄덕이는 회의는 잊으세요</span>
+    <h1 class="title">25인의 거장이<br>당신의 결정을 <span class="em">로스팅</span>합니다</h1>
+    <p class="sub">소크라테스부터 젠슨 황까지. 서로 반대편에 선 거장들을 한자리에 불러, 같은 문제를 두고 부딪치게 합니다. 매끄러운 한 줄의 답 대신, 충분히 다툰 뒤 남는 것을 드립니다.</p>
+    <div class="hero-cta">
+      <a class="btn primary" href="#council">자문단 만나기</a>
+      <a class="btn ghost" href="#modes">토론 모드 보기</a>
     </div>
   </div>
 
   <div class="stage" id="stage">
     <canvas id="orbits"></canvas>
-    <div class="nucleus"><span class="nlabel">나의<br>결정</span></div>
+    <div class="nucleus"><span class="nlabel"><small>YOUR</small>나의<br>결정</span></div>
   </div>
+
+  <div class="caption idle" id="caption">
+    <div class="cap-name">궤도 위의 거장을 만나 보세요</div>
+    <div class="cap-pol">다섯 영역, 다섯 개의 궤도. 각 궤도에 다섯 명의 거장이 당신의 결정 주위를 돕니다.</div>
+  </div>
+
+  <div class="scroll-hint"><div class="ch"></div>SCROLL</div>
 </header>
 
-<div class="page-light">
 <main class="wrap">
   <section class="block" id="council">
     <div class="sec-head">
@@ -314,8 +278,9 @@
     <div class="foot-grid">
       <div class="foot-tag">좋은 결정은 매끄러운 한 줄에서 나오지 않습니다. 반대편에 선 사람들이 충분히 다툰 뒤 남는 것에서 나옵니다.</div>
       <div class="foot-meta">
-        <span class="chip">5 Domains</span>
         <span class="chip">25 Experts</span>
+        <span class="chip">5 Domains</span>
+        <span class="chip">13 Triads</span>
         <span class="chip">Claude Code Skill</span>
         <span class="chip">MIT License</span>
       </div>
@@ -326,7 +291,6 @@
     </div>
   </div>
 </footer>
-</div>
 
 <script>
 const DOMAINS = [
@@ -382,7 +346,8 @@ DOMAINS.forEach((dm,di)=>{
   let cards = people.map(p=>`
     <article class="card" id="card-${p.gi}" style="--dc:${dm.c}">
       <div class="idx">${String(p.gi+1).padStart(2,'0')}</div>
-      <div class="kr-name">${p.kr}</div>
+      <div class="en">${p.en}</div>
+      <div class="kr">${p.kr}</div>
       <div class="pol">${p.p}</div>
     </article>`).join('');
   grp.innerHTML=`
@@ -462,7 +427,7 @@ function setHot(gi){
   hot=gi;
   const p=PEOPLE[gi];
   caption.classList.remove('idle');
-  capName.textContent=p.kr;
+  capName.innerHTML=`${p.kr}<em>${p.en}</em>`;
   capPol.textContent=p.p;
   nodes.forEach(n=>n.el.classList.toggle('hot', +n.el.dataset.gi===gi));
 }
@@ -480,7 +445,7 @@ function resize(){
   W=r.width; H=r.height;
   const fb=innerWidth>=768;            // full-bleed desktop hero
   cx=W/2; cy=H/2;                      // orbit center == nucleus (CSS 50%)
-  baseR=Math.min(W,H)*(fb?0.45:0.455);
+  baseR=Math.min(W,H)*(fb?0.435:0.455);
   dpr=Math.min(devicePixelRatio||1,2);
   cv.width=W*dpr; cv.height=H*dpr;
   ctx.setTransform(dpr,0,0,dpr,0,0);
@@ -503,8 +468,8 @@ function drawOrbit(ring){
     const px=cx+q.x, py=cy+q.y;
     a===0?ctx.moveTo(px,py):ctx.lineTo(px,py);
   }
-  ctx.strokeStyle=hex(ring.c,.07); ctx.lineWidth=7; ctx.stroke();
-  ctx.strokeStyle=hex(ring.c,.34); ctx.lineWidth=1; ctx.stroke();
+  ctx.strokeStyle=hex(ring.c,.10); ctx.lineWidth=7; ctx.stroke();
+  ctx.strokeStyle=hex(ring.c,.42); ctx.lineWidth=1.1; ctx.stroke();
 }
 function hex(c,a){
   const n=parseInt(c.slice(1),16);

@@ -3,8 +3,9 @@
 Validate the AI ROASTING 자문단 agent files against SKILL.md.
 
 Catches the failure class that breaks dispatch: filename / name / SKILL slug
-mismatches, missing sections, em dashes, and references to figures that are not
-in the 25-member roster. Run from the package root:
+mismatches, missing sections, em dashes, and drift between the three places a
+slug lives (agent files, the SKILL.md runtime lookup table, resolve_members.py).
+Run from the package root:
 
     python3 scripts/validate_agents.py
 
@@ -68,10 +69,28 @@ def main():
         if "—" in text:
             errors.append(f"{f.name}: contains em dash")
 
-        # any my-domain-pair slug in prose must be a real member
-        for tok in set(re.findall(r"\b[a-z]+-[a-z]+(?:-[a-z]+)?\b", text)):
-            if tok in {"jeong-yagyong"}:  # known past misspelling
-                errors.append(f"{f.name}: references stale slug '{tok}'")
+    # SKILL.md runtime lookup table (Korean name = slug): every slug must be
+    # real, and all 25 must appear. This is the table the coordinator dispatches
+    # from, so drift here silently breaks --members.
+    table_slugs = set(re.findall(r"[가-힣][가-힣 ]*=([a-z]+(?:-[a-z]+)*)", skill_text))
+    for s in table_slugs - slugs:
+        errors.append(f"SKILL.md lookup table maps to unknown slug '{s}'")
+    for s in slugs - table_slugs:
+        errors.append(f"SKILL.md lookup table is missing slug '{s}'")
+
+    # resolve_members.py must carry the same 25 slugs (no drift with the table).
+    try:
+        sys.path.insert(0, str(ROOT / "scripts"))
+        import resolve_members  # noqa: E402
+
+        if set(resolve_members.SLUGS) != slugs:
+            extra = set(resolve_members.SLUGS) - slugs
+            missing = slugs - set(resolve_members.SLUGS)
+            errors.append(
+                f"resolve_members.py slugs drift: extra={sorted(extra)} missing={sorted(missing)}"
+            )
+    except Exception as e:  # noqa: BLE001
+        errors.append(f"could not import resolve_members.py: {e}")
 
     if errors:
         print("FAIL")
@@ -79,7 +98,10 @@ def main():
             print("  -", e)
         sys.exit(1)
 
-    print(f"PASS  {len(agent_files)} agents, names/slugs/sections consistent, no em dash")
+    print(
+        f"PASS  {len(agent_files)} agents, names/slugs/sections consistent, "
+        "lookup table and resolve_members in sync, no em dash"
+    )
     sys.exit(0)
 
 

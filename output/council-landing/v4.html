@@ -47,7 +47,7 @@
     background-size:3px 3px;mix-blend-mode:screen;}
 
   a{color:inherit;text-decoration:none}
-  .wrap{max-width:1200px;margin:0 auto;padding:0 28px}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 28px}
 
   /* ---------- NAV ---------- */
   nav{position:fixed;top:0;left:0;right:0;z-index:50;
@@ -111,10 +111,10 @@
     cursor:pointer;will-change:transform;transition:filter .2s}
   .node .pt{width:12px;height:12px;border-radius:50%;background:var(--nc);
     box-shadow:0 0 12px var(--nc),0 0 4px #fff inset;border:1.5px solid rgba(255,255,255,.85)}
-  .node .nm{display:none;font-size:11.5px;font-weight:600;white-space:nowrap;color:#eaeefb;
+  .node .nm{font-size:11.5px;font-weight:600;white-space:nowrap;color:#eaeefb;
     text-shadow:0 1px 8px rgba(0,0,0,.9);padding:1px 6px;border-radius:6px;letter-spacing:-.01em}
   .node.hot .pt{width:16px;height:16px;box-shadow:0 0 22px var(--nc),0 0 7px #fff inset}
-  .node.hot .nm{display:block;background:var(--nc);color:#080a14;text-shadow:none}
+  .node.hot .nm{background:var(--nc);color:#080a14;text-shadow:none}
 
   .caption{min-height:46px;text-align:center;z-index:6;position:relative;
     display:flex;flex-direction:column;gap:3px;align-items:center;transition:.25s}
@@ -214,35 +214,6 @@
     .nucleus .nlabel{font-size:12px}
   }
 
-  /* ---------- LIGHT MODE (page 2 onward) ---------- */
-  .page-light{
-    --bg:#f6f7fb; --ink:#13161f; --muted:#5a6172; --faint:#9aa0ae;
-    --line:rgba(18,21,30,.10);
-    position:relative; z-index:1; color:var(--ink);
-    background:
-      radial-gradient(900px 580px at 10% -4%, rgba(124,92,255,.09), transparent 60%),
-      radial-gradient(820px 600px at 96% 3%, rgba(56,189,248,.07), transparent 58%),
-      radial-gradient(900px 700px at 50% 108%, rgba(52,211,153,.06), transparent 60%),
-      linear-gradient(180deg,#f8f9fc 0%, #eef1f7 60%, #f3f5fa 100%);
-  }
-  .page-light .domain-bar{background:linear-gradient(180deg,#f6f7fb 58%,rgba(246,247,251,0))}
-  .page-light .card{background:#fff;border-color:rgba(18,21,30,.09);
-    box-shadow:0 1px 2px rgba(18,21,30,.04),0 1px 0 rgba(255,255,255,.6) inset}
-  .page-light .card .pol{color:var(--muted);border-top-color:var(--line)}
-  .page-light .card:hover{border-color:color-mix(in srgb,var(--dc) 50%,transparent);
-    box-shadow:0 20px 44px rgba(18,21,30,.14),0 0 0 1px color-mix(in srgb,var(--dc) 28%,transparent)}
-  .page-light .card.flash{animation:flashL 1.4s ease}
-  @keyframes flashL{0%,100%{box-shadow:0 1px 2px rgba(18,21,30,.04)}30%{box-shadow:0 0 0 2px var(--dc),0 14px 36px color-mix(in srgb,var(--dc) 40%,transparent)}}
-  .page-light .sec-title em{background:linear-gradient(100deg,#13161f 12%,#6d4dff 92%);
-    -webkit-background-clip:text;background-clip:text;color:transparent}
-  .page-light .mode{background:#fff;border-color:rgba(18,21,30,.09);box-shadow:0 1px 2px rgba(18,21,30,.04)}
-  .page-light .mode:hover{border-color:rgba(18,21,30,.18);background:#fff;box-shadow:0 14px 32px rgba(18,21,30,.1)}
-  .page-light .mode code{background:rgba(11,135,176,.1);color:#0b87b0}
-  .page-light .mode p{color:var(--muted)}
-  .page-light footer{border-top-color:var(--line)}
-  .page-light .chip{background:#fff;border-color:var(--line);color:var(--muted)}
-  .page-light .foot-bottom{border-top-color:var(--line);color:var(--faint)}
-
   @media (prefers-reduced-motion: reduce){
     *{animation:none!important;scroll-behavior:auto!important}
     .card{opacity:1;transform:none}
@@ -288,7 +259,6 @@
   </div>
 </header>
 
-<div class="page-light">
 <main class="wrap">
   <section class="block" id="council">
     <div class="sec-head">
@@ -326,7 +296,6 @@
     </div>
   </div>
 </footer>
-</div>
 
 <script>
 const DOMAINS = [
