@@ -312,7 +312,7 @@
 <div class="bg-grain"></div>
 
 <nav id="nav">
-  <a class="brand" href="#top"><span class="mark"><img src="../../assets/logos/logo1-transparent.png" alt=""></span><b>AI ROASTING</b><span>자문단</span></a>
+  <a class="brand" href="#top"><span class="mark"><img src="assets/logos/logo1-transparent.png" alt=""></span><b>AI ROASTING</b><span>자문단</span></a>
   <div class="nav-links">
     <a href="#council">자문단</a>
     <a href="#modes">토론 모드</a>
@@ -341,7 +341,7 @@
 
   <div class="stage" id="stage">
     <canvas id="orbits"></canvas>
-    <div class="nucleus"><img class="logo-mark" src="../../assets/logos/logo1-transparent.png" alt="AI ROASTING"></div>
+    <div class="nucleus"><img class="logo-mark" src="assets/logos/logo1-transparent.png" alt="AI ROASTING"></div>
   </div>
 
   <div class="scroll-hint"><div class="ch"></div>SCROLL</div>
@@ -467,7 +467,7 @@ DOMAINS.forEach((dm,di)=>{
   const people = PEOPLE.map((p,i)=>({...p,gi:i})).filter(p=>p.d===di);
   let cards = people.map(p=>`
     <article class="ccard" id="card-${p.gi}" style="--dc:${dm.c}">
-      <div class="disc"><img class="face" src="../../assets/avatar/${String(p.gi+1).padStart(2,'0')}.png" alt="${p.kr}" loading="lazy" decoding="async"><span class="cidx">${String(p.gi+1).padStart(2,'0')}</span></div>
+      <div class="disc"><img class="face" src="assets/avatar/${String(p.gi+1).padStart(2,'0')}.png" alt="${p.kr}" loading="lazy" decoding="async"><span class="cidx">${String(p.gi+1).padStart(2,'0')}</span></div>
       <div class="cname">${p.kr}</div>
       <div class="cpol">${p.p}</div>
     </article>`).join('');

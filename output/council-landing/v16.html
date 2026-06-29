@@ -64,9 +64,9 @@
     border-bottom:2px solid transparent;}
   nav.scrolled{background:var(--bone);border-bottom:2px solid var(--ink);}
   .brand{display:flex;align-items:center;gap:11px;font-family:var(--label);font-weight:800;letter-spacing:.04em;text-transform:uppercase}
-  .brand .mark{width:30px;height:30px;border-radius:50%;background:#fff;border:1px solid #fff;
-    display:grid;place-items:center;flex:0 0 auto;overflow:hidden}
-  .brand .mark img{width:100%;height:100%;border-radius:50%;object-fit:cover;display:block;transform:scale(1.18)}
+  .brand .mark{width:30px;height:30px;border-radius:8px;position:relative;background:var(--orange);
+    border:2px solid var(--ink)}
+  .brand .mark::after{content:"";position:absolute;inset:7px;border-radius:3px;background:var(--ink);}
   .brand b{font-size:18px;color:var(--bone)}
   nav.scrolled .brand b{color:var(--ink)}
   .brand span{color:var(--bone);opacity:.7;font-weight:600;font-size:15px}
@@ -108,13 +108,14 @@
 
   /* ---------- ATOM STAGE ---------- */
   .stage{order:2;position:relative;width:min(86vw,640px);height:min(86vw,640px);
-    margin-top:10px;flex:0 0 auto;z-index:1;isolation:isolate;perspective:780px}
+    margin-top:10px;flex:0 0 auto;z-index:1;isolation:isolate}
   .stage canvas{position:absolute;inset:0;width:100%;height:100%}
   .nucleus{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
-    width:100px;height:100px;border-radius:50%;background:#fff;border:1px solid #fff;overflow:hidden;
-    display:grid;place-items:center;z-index:600;
-    box-shadow:0 0 46px rgba(238,122,46,.42),0 0 96px rgba(238,122,46,.18)}
-  .nucleus .logo-mark{width:100%;height:100%;border-radius:50%;display:block;object-fit:cover}
+    width:132px;height:132px;border-radius:50%;display:grid;place-content:center;text-align:center;z-index:600;
+    background:radial-gradient(circle at 38% 32%,var(--paper),var(--bone) 70%);
+    border:2px solid var(--ink);box-shadow:0 0 0 6px rgba(238,122,46,.18)}
+  .nucleus .avatar{width:72px;height:72px;position:relative;z-index:2;overflow:visible}
+  .nucleus .avatar circle,.nucleus .avatar path{fill:var(--ink)}
 
   .node{position:absolute;top:0;left:0;display:flex;flex-direction:column;align-items:center;gap:5px;
     cursor:pointer;will-change:transform;transition:filter .2s}
@@ -132,7 +133,7 @@
   .caption .cap-pol{font-size:14px;color:rgba(226,220,201,.72);max-width:560px}
   .caption.idle .cap-pol{color:rgba(226,220,201,.5)}
 
-  .scroll-hint{order:4;z-index:7;margin-top:14px;color:rgba(226,220,201,.6);font-family:var(--label);font-size:14px;font-weight:700;letter-spacing:.14em;
+  .scroll-hint{color:rgba(226,220,201,.6);font-family:var(--label);font-size:14px;font-weight:700;letter-spacing:.14em;
     display:flex;flex-direction:column;align-items:center;gap:6px}
   .scroll-hint .ch{width:22px;height:34px;border:2px solid rgba(226,220,201,.45);border-radius:12px;position:relative}
   .scroll-hint .ch::after{content:"";position:absolute;left:50%;top:7px;width:3px;height:7px;border-radius:2px;
@@ -151,7 +152,6 @@
     .hero-foot .caption{text-align:left;align-items:flex-start}
     .stage{order:0;width:100%;height:min(80vh,680px);max-width:740px;
       justify-self:center;align-self:center;margin:0}
-    .hero .scroll-hint{position:absolute;left:50%;bottom:clamp(18px,3vh,30px);transform:translateX(-50%);z-index:7}
   }
 
   /* ---------- SECTION SHELL ---------- */
@@ -206,10 +206,11 @@
     background:var(--bone);padding:5px 13px;border-radius:999px;border:1.5px solid var(--ink);align-self:flex-start;margin-bottom:16px}
   .mode h4{font-family:var(--display);text-transform:uppercase;font-size:19px;font-weight:700;margin-bottom:9px;color:var(--ink);letter-spacing:-.01em}
   .mode p{font-size:14px;color:var(--muted);line-height:1.5}
-  .mode .ex{margin-top:auto}
-  .mode .exline{font-family:var(--label);font-weight:600;font-size:14px;color:var(--bone);
-    background:var(--ink);border:2px solid var(--ink);border-radius:10px;padding:12px 13px;line-height:1.5;
-    min-height:94px;display:flex;align-items:center}
+  .mode .ex{margin-top:auto;padding-top:18px}
+  .mode .ex span{display:block;font-family:var(--label);font-weight:700;font-size:12px;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--faint);margin-bottom:7px}
+  .mode .ex .exline{font-family:var(--label);font-weight:600;font-size:14px;color:var(--ink);
+    background:var(--bone);border:1.5px solid var(--ink);border-radius:9px;padding:10px 12px;line-height:1.45}
 
   /* ---------- FOOTER (black full-bleed) ---------- */
   footer{padding:80px 0 64px;margin-top:0;position:relative}
@@ -226,7 +227,8 @@
   @media(max-width:560px){
     .node .pt{width:12px;height:12px}
     .node.hot .pt{width:16px;height:16px}
-    .nucleus{width:100px;height:100px}
+    .nucleus{width:112px;height:112px}
+    .nucleus .avatar{width:60px;height:60px}
     .wrap{padding:0 24px}
     nav{padding:16px 24px}
   }
@@ -312,7 +314,7 @@
 <div class="bg-grain"></div>
 
 <nav id="nav">
-  <a class="brand" href="#top"><span class="mark"><img src="../../assets/logos/logo1-transparent.png" alt=""></span><b>AI ROASTING</b><span>자문단</span></a>
+  <a class="brand" href="#top"><span class="mark"></span><b>AI ROASTING</b><span>자문단</span></a>
   <div class="nav-links">
     <a href="#council">자문단</a>
     <a href="#modes">토론 모드</a>
@@ -336,15 +338,14 @@
         <a class="btn primary" href="#council">자문단 만나기</a>
         <a class="btn ghost" href="#modes">토론 모드 보기</a>
       </div>
+      <div class="scroll-hint"><div class="ch"></div>SCROLL</div>
     </div>
   </div>
 
   <div class="stage" id="stage">
     <canvas id="orbits"></canvas>
-    <div class="nucleus"><img class="logo-mark" src="../../assets/logos/logo1-transparent.png" alt="AI ROASTING"></div>
+    <div class="nucleus"><svg class="avatar" viewBox="0 0 100 100" aria-label="나"><circle cx="50" cy="37" r="19"/><path d="M15 92 C15 65, 85 65, 85 92 Z"/></svg></div>
   </div>
-
-  <div class="scroll-hint"><div class="ch"></div>SCROLL</div>
 </header>
 
 <div class="zone-dark zone-why">
@@ -451,11 +452,11 @@ const PEOPLE = [
   {d:4,kr:'하워드 막스',s:'하워드 막스',en:'Howard Marks',p:'좋은 자산이 아니라 좋은 가격이 수익을 만든다.'},
 ];
 const MODES = [
-  {cmd:'/council', t:'전체 (기본)', d:'세 라운드로 깊게 토론합니다. 결정이 무겁고 의견이 갈릴 때.', ex:'/council 지금 신규 시장에 들어가야 할까요'},
-  {cmd:'--quick', t:'빠른', d:'두 라운드로 빠르게 읽습니다. 상대적으로 가벼운 결정.', ex:'/council --quick 이 제목 두 개 중 무엇이 더 나을까요'},
-  {cmd:'--duo', t:'듀오', d:'대척점에 선 두 사람만 붙입니다. 하나의 긴장을 파고들 때.', ex:'/council --duo 출시를 서둘러야 할까요, 신중해야 할까요'},
-  {cmd:'--triad', t:'트라이어드', d:'문제 유형에 맞춘 세 명을 부릅니다.', ex:'/council --triad 위기관리 이 리콜에 어떻게 대응해야 할까요'},
-  {cmd:'--members', t:'전문가 지정', d:'원하는 인물만 직접 불러 모읍니다.', ex:'/council --members 이순신,정약용 이 조직개편이 맞을까요'},
+  {cmd:'/council', t:'전체 (기본)', d:'세 라운드로 깊게 토론합니다. 결정이 무겁고 의견이 갈릴 때.', ex:'/council 신규 시장에 지금 들어갈까'},
+  {cmd:'--quick', t:'빠른', d:'두 라운드로 빠르게 읽습니다. 상대적으로 가벼운 결정.', ex:'/council --quick 이 제목 두 개 중 뭐가 나아'},
+  {cmd:'--duo', t:'듀오', d:'대척점에 선 두 사람만 붙입니다. 하나의 긴장을 파고들 때.', ex:'/council --duo 출시 속도냐 신중함이냐'},
+  {cmd:'--triad', t:'트라이어드', d:'문제 유형에 맞춘 세 명을 부릅니다.', ex:'/council --triad 위기관리 이 리콜에 어떻게 대응할까'},
+  {cmd:'--members', t:'전문가 지정', d:'원하는 인물만 직접 불러 모읍니다.', ex:'/council --members 이순신,정약용 이 조직개편'},
 ];
 
 /* ---------- build council cards ---------- */
@@ -483,7 +484,7 @@ DOMAINS.forEach((dm,di)=>{
 /* ---------- modes ---------- */
 document.getElementById('modes-grid').innerHTML = MODES.map(m=>`
   <div class="mode"><code>${m.cmd}</code><h4>${m.t}</h4><p>${m.d}</p>
-    <div class="ex"><div class="exline">${m.ex}</div></div></div>`).join('');
+    <div class="ex"><span>예시</span><div class="exline">${m.ex}</div></div></div>`).join('');
 
 /* ---------- scroll reveal ---------- */
 const io = new IntersectionObserver((es)=>{
@@ -736,30 +737,6 @@ if(reduce){
   },{threshold:0}).observe(document.getElementById('top'));
   start();
 }
-
-/* ---------- nucleus looks at the cursor (3D) ---------- */
-(function(){
-  const nuc=document.querySelector('.nucleus');
-  if(!nuc || reduce) return;
-  const ROTY=42, ROTX=-32, SHIFT=26;   // amplitude: bigger = moves more
-  let tx=0,ty=0,cx=0,cy=0,running=false;
-  function loop(){
-    cx+=(tx-cx)*0.26; cy+=(ty-cy)*0.26;
-    const ry=cx*ROTY, rx=cy*ROTX, px=cx*SHIFT, py=cy*SHIFT;
-    nuc.style.transform=`translate(-50%,-50%) translate3d(${px.toFixed(1)}px,${py.toFixed(1)}px,0) rotateY(${ry.toFixed(2)}deg) rotateX(${rx.toFixed(2)}deg)`;
-    if(Math.abs(tx-cx)>0.002 || Math.abs(ty-cy)>0.002){ requestAnimationFrame(loop); } else { running=false; }
-  }
-  function kick(){ if(!running){ running=true; requestAnimationFrame(loop); } }
-  addEventListener('mousemove',e=>{
-    const r=nuc.getBoundingClientRect();
-    if(r.bottom<0 || r.top>innerHeight) return;          // hero offscreen
-    const ox=r.left+r.width/2, oy=r.top+r.height/2;
-    tx=Math.max(-1,Math.min(1,(e.clientX-ox)/(innerWidth*0.38)));
-    ty=Math.max(-1,Math.min(1,(e.clientY-oy)/(innerHeight*0.38)));
-    kick();
-  },{passive:true});
-  document.addEventListener('mouseleave',()=>{ tx=0; ty=0; kick(); });
-})();
 </script>
 </body>
 </html>

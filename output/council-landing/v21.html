@@ -111,7 +111,7 @@
     margin-top:10px;flex:0 0 auto;z-index:1;isolation:isolate;perspective:780px}
   .stage canvas{position:absolute;inset:0;width:100%;height:100%}
   .nucleus{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
-    width:100px;height:100px;border-radius:50%;background:#fff;border:1px solid #fff;overflow:hidden;
+    width:125px;height:125px;border-radius:50%;background:#fff;border:1px solid #fff;overflow:hidden;
     display:grid;place-items:center;z-index:600;
     box-shadow:0 0 46px rgba(238,122,46,.42),0 0 96px rgba(238,122,46,.18)}
   .nucleus .logo-mark{width:100%;height:100%;border-radius:50%;display:block;object-fit:cover}
@@ -226,7 +226,7 @@
   @media(max-width:560px){
     .node .pt{width:12px;height:12px}
     .node.hot .pt{width:16px;height:16px}
-    .nucleus{width:100px;height:100px}
+    .nucleus{width:126px;height:126px}
     .wrap{padding:0 24px}
     nav{padding:16px 24px}
   }
@@ -741,24 +741,22 @@ if(reduce){
 (function(){
   const nuc=document.querySelector('.nucleus');
   if(!nuc || reduce) return;
-  const ROTY=42, ROTX=-32, SHIFT=26;   // amplitude: bigger = moves more
-  let tx=0,ty=0,cx=0,cy=0,running=false;
+  let tY=0,tX=0,cY=0,cX=0,running=false;
   function loop(){
-    cx+=(tx-cx)*0.26; cy+=(ty-cy)*0.26;
-    const ry=cx*ROTY, rx=cy*ROTX, px=cx*SHIFT, py=cy*SHIFT;
-    nuc.style.transform=`translate(-50%,-50%) translate3d(${px.toFixed(1)}px,${py.toFixed(1)}px,0) rotateY(${ry.toFixed(2)}deg) rotateX(${rx.toFixed(2)}deg)`;
-    if(Math.abs(tx-cx)>0.002 || Math.abs(ty-cy)>0.002){ requestAnimationFrame(loop); } else { running=false; }
+    cY+=(tY-cY)*0.12; cX+=(tX-cX)*0.12;
+    nuc.style.transform=`translate(-50%,-50%) rotateY(${cY.toFixed(2)}deg) rotateX(${cX.toFixed(2)}deg)`;
+    if(Math.abs(tY-cY)>0.04 || Math.abs(tX-cX)>0.04){ requestAnimationFrame(loop); } else { running=false; }
   }
   function kick(){ if(!running){ running=true; requestAnimationFrame(loop); } }
   addEventListener('mousemove',e=>{
     const r=nuc.getBoundingClientRect();
     if(r.bottom<0 || r.top>innerHeight) return;          // hero offscreen
     const ox=r.left+r.width/2, oy=r.top+r.height/2;
-    tx=Math.max(-1,Math.min(1,(e.clientX-ox)/(innerWidth*0.38)));
-    ty=Math.max(-1,Math.min(1,(e.clientY-oy)/(innerHeight*0.38)));
+    tY=Math.max(-1,Math.min(1,(e.clientX-ox)/(innerWidth*0.42)))*18;
+    tX=Math.max(-1,Math.min(1,(e.clientY-oy)/(innerHeight*0.42)))*-13;
     kick();
   },{passive:true});
-  document.addEventListener('mouseleave',()=>{ tx=0; ty=0; kick(); });
+  document.addEventListener('mouseleave',()=>{ tY=0; tX=0; kick(); });
 })();
 </script>
 </body>
