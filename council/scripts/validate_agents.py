@@ -20,10 +20,10 @@ AGENTS = ROOT / "agents"
 SKILL = ROOT / "SKILL.md"
 
 REQUIRED_SECTIONS = [
-    "## Identity",
-    "## Core Principles",
-    "## Decision Rules",
-    "## Anti-Hallucination Rules",
+    "## 정체",
+    "## 핵심 원칙",
+    "## 결정 규칙",
+    "## 환각 방지 규칙",
 ]
 
 
