@@ -171,4 +171,4 @@ socrates / alfred-adler · aristotle / lao-tzu · sun-tzu / yi-sunsin · niccolo
 
 ## 문체 규칙
 
-전문가 발언과 종합 의견의 문체 규칙은 `references/voice-rules.md`에 정본이 있습니다. 번역투, 흐리는 어미, 격식어 부풀리기, 빈 형용사와 과장어, 접속사 남발, 메타 표현, 억지 동사구와 개념 직역, 명언 마무리, 공감 흉내를 금하고, 외래어는 우리말로, em dash는 0개입니다. **코디네이터는 dispatch 전에 그 파일을 직접 읽습니다.** 설치된 경우 `~/.claude/skills/council/references/voice-rules.md`를, 저장소에서 바로 쓰는 경우 `references/voice-rules.md`를 Read하고, 그 전문을 각 전문가 프롬프트 끝에 그대로 붙입니다. 기억으로 재구성하지 말고 파일을 읽으세요. 종합할 때도 같은 규칙을 따릅니다. 규칙은 이 한 파일에서만 고칩니다.
+전문가 발언과 종합 의견의 문체 규칙은 `references/voice-rules.md`에 정본이 있습니다. 번역투, 흐리는 어미, 격식어 부풀리기, 빈 형용사와 과장어, 접속사 남발, 메타 표현, 억지 동사구와 개념 직역, 명언 마무리, 공감 흉내를 금하고, 외래어는 우리말로, em dash는 0개입니다. **코디네이터는 dispatch 전에 그 파일을 한 번 읽어 두고, 매 라운드 모든 프롬프트 끝에 그 전문을 붙입니다.** 설치된 경우 `~/.claude/skills/council/references/voice-rules.md`를, 저장소에서 바로 쓰는 경우 `references/voice-rules.md`를 Read합니다. 기억으로 재구성하지 말고 파일을 읽으세요. 종합할 때도 같은 규칙을 따릅니다. 규칙은 이 한 파일에서만 고칩니다.

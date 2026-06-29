@@ -75,6 +75,8 @@ def main():
     table_line = next(
         (ln for ln in skill_text.splitlines() if "소크라테스=socrates" in ln), ""
     )
+    if not table_line:
+        errors.append("SKILL.md lookup table line not found (anchor '소크라테스=socrates')")
     table_slugs = set(re.findall(r"=([a-z]+(?:-[a-z]+)*)", table_line))
     for s in table_slugs - slugs:
         errors.append(f"SKILL.md lookup table maps to unknown slug '{s}'")
