@@ -55,7 +55,7 @@
 | 빠른 | `/council --quick [문제]` | 두 라운드로 빠르게 읽습니다. 상대적으로 가벼운 결정 |
 | 듀오 | `/council --duo [문제]` | 대척점에 선 두 사람만 붙입니다. 하나의 긴장을 파고들 때 |
 | 트라이어드 | `/council --triad <이름> [문제]` | 문제 유형에 맞춘 세 명을 부릅니다 |
-| 전문가 지정 | `/council --members yi-sunsin,jeong-yakyong,niccolo-machiavelli [문제]` | 원하는 인물만 부릅니다 |
+| 전문가 지정 | `/council --members 이순신,정약용,마키아벨리 [문제]` | 원하는 인물만 부릅니다 |
 
 미리 정해 둔 트라이어드로는 `strategy`, `crisis`, `governance`, `decision`, `innovation`, `endurance`, `ai`, `ai-infra`, `investing`, `macro`, `ethics`, `framing`, `systems`가 있습니다.
 
@@ -79,9 +79,9 @@
 ```
 /council 후발 주자로 대기업과 같은 시장에 정면 진입해야 할까요?
 /council --triad investing 이 회사를 지금 인수할 만한가요?
-/council --duo 마이크로서비스로 갈까요, 모놀리식으로 갈까요?
+/council --duo 마이크로서비스와 모놀리식, 지금 단계에서 어느 쪽이 맞을까요?
 /council --quick 이번 분기에 출시해도 될까요?
-/council --members yi-sunsin,jeong-yakyong,niccolo-machiavelli 이 조직 개편을 강행해야 할까요?
+/council --members 이순신,정약용,마키아벨리 이 조직 개편을 강행해야 할까요?
 ```
 
 결과는 매끈한 합의가 아니라 갈라진 지점을 먼저 보여줍니다.
