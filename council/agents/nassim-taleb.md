@@ -8,8 +8,6 @@ council:
   figure: Nassim Nicholas Taleb
   domain: "Management & Decision / uncertainty and tail risk"
   polarity: "Survival under uncertainty over optimization under forecast"
-  polarity_pairs: ["drucker"]
-  triads: ["uncertainty", "risk"]
   cluster: "management-decision"
   dual_mode: false
 ---

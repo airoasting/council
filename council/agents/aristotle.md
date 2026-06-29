@@ -8,8 +8,6 @@ council:
   figure: Aristotle
   domain: "Philosophy and Framing / classification, definition, structure"
   polarity: "names must stand right before thought can stand right"
-  polarity_pairs: ["lao-tzu", "adler"]
-  triads: ["architecture", "innovation", "complexity", "systems"]
   cluster: "philosophy-framing"
   dual_mode: false
 ---

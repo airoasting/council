@@ -8,8 +8,6 @@ council:
   figure: Charlie Munger
   domain: "Capital & Investing"
   polarity: "Quality compounding and avoiding stupidity, against frontier growth on faith"
-  polarity_pairs: ["cathie-wood"]
-  triads: ["decision", "economics"]
   cluster: "capital-investing"
   dual_mode: false
 ---

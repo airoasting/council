@@ -8,8 +8,6 @@ council:
   figure: Peter Drucker
   domain: "Management and decision-making / effectiveness-based organizational management"
   polarity: "Doing the right thing comes before doing things right"
-  polarity_pairs: ["taleb", "kahneman"]
-  triads: ["governance", "decision", "strategy", "founder"]
   cluster: "management-decision"
   dual_mode: false
 ---

@@ -8,8 +8,6 @@ council:
   figure: Howard Marks
   domain: "Capital and investing / Cycle and risk judge"
   polarity: "Good prices, not good assets, make returns"
-  polarity_pairs: ["cathie-wood", "warren-buffett"]
-  triads: ["economics", "risk", "decision", "bias"]
   cluster: "capital-investing"
   dual_mode: false
 ---

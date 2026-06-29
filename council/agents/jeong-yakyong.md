@@ -8,8 +8,6 @@ council:
   figure: Jeong Yak-yong (Dasan)
   domain: "Strategy, governance, power / institutional reform grounded in practical statecraft"
   polarity: "Power is legitimate only when it reaches the weakest"
-  polarity_pairs: ["machiavelli", "aristotle"]
-  triads: ["governance", "systems", "reform", "ethics", "execution"]
   cluster: "strategy-governance"
   dual_mode: false
 ---

@@ -8,8 +8,6 @@ council:
   figure: Lao Tzu
   domain: "Philosophy and Framing"
   polarity: "Wu wei and emergence against deliberate classification and imposed structure"
-  polarity_pairs: ["aristotle"]
-  triads: ["ethics", "innovation", "complexity", "systems"]
   cluster: "philosophy-framing"
   dual_mode: false
 ---

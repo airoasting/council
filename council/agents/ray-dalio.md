@@ -8,8 +8,6 @@ council:
   figure: Ray Dalio
   domain: "Capital and investing / macro cycles and principle-based judgment"
   polarity: "The closest thing to a free lunch is a spread of uncorrelated bets, not a single good one"
-  polarity_pairs: ["buffett"]
-  triads: ["economics", "decision", "risk", "uncertainty"]
   cluster: "capital-investing"
   dual_mode: false
 ---

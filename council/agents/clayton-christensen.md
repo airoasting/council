@@ -8,8 +8,6 @@ council:
   figure: Clayton Christensen
   domain: "Management and decision-making / disruptive innovation and growth"
   polarity: "Companies fail precisely because they did everything right"
-  polarity_pairs: ["collins"]
-  triads: ["innovation", "strategy", "decision", "ai-product"]
   cluster: "management-decision"
   dual_mode: false
 ---

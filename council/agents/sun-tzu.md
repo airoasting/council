@@ -8,8 +8,6 @@ council:
   figure: Sun Tzu
   domain: "Strategy, Governance & Power"
   polarity: "Win the war before the first battle by shaping the position, against accepting the battle as it is given"
-  polarity_pairs: ["clausewitz", "yi-sunsin"]
-  triads: ["strategy", "risk", "founder", "uncertainty", "economics"]
   cluster: "strategy-power"
   dual_mode: false
 ---

@@ -8,8 +8,6 @@ council:
   figure: Carl von Clausewitz
   domain: "Strategy, governance, power / decisions amid friction and uncertainty"
   polarity: "A plan begins to wear down the moment it meets the enemy"
-  polarity_pairs: ["sun-tzu", "jeong-yagyong"]
-  triads: ["strategy", "risk", "uncertainty", "conflict", "execution"]
   cluster: "strategy-governance"
   dual_mode: false
 ---

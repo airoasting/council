@@ -8,8 +8,6 @@ council:
   figure: Socrates
   domain: "Philosophy and framing"
   polarity: "I tear a claim down to find what it cannot survive; my pairs rebuild and reframe what is left."
-  polarity_pairs: ["feynman", "adler"]
-  triads: ["ethics", "debugging", "conflict", "ai-safety", "bias"]
   cluster: "philosophy-framing"
   dual_mode: false
 ---

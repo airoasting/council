@@ -8,8 +8,6 @@ council:
   figure: Elon Musk
   domain: "Technology and AI / first-principles extreme manufacturing and execution"
   polarity: "Physics is the limit, not convention. Cost comes down when you decompose it."
-  polarity_pairs: ["amodei"]
-  triads: ["ai", "ai-product", "shipping", "founder", "risk"]
   cluster: "technology-ai"
   dual_mode: false
 ---

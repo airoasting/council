@@ -8,8 +8,6 @@ council:
   figure: Sam Altman
   domain: "Technology and AI / platforms, commercialization, iterative deployment"
   polarity: "Those who ship into the world and learn compound ahead"
-  polarity_pairs: ["hassabis"]
-  triads: ["ai", "ai-product", "economics", "founder"]
   cluster: "technology-ai"
   dual_mode: false
 ---

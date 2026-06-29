@@ -8,8 +8,6 @@ council:
   figure: Cathie Wood
   domain: "Capital & Investing"
   polarity: "Disruptive innovation and long-duration growth, against near-term cash flow and margin of safety"
-  polarity_pairs: ["warren-buffett", "charlie-munger"]
-  triads: ["ai", "economics"]
   cluster: "capital-investing"
   dual_mode: false
 ---

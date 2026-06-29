@@ -8,8 +8,6 @@ council:
   figure: Jensen Huang
   domain: "Technology and AI / accelerated computing and infrastructure"
   polarity: "Compute is the new raw material. Algorithms only run on top of it"
-  polarity_pairs: ["elon-musk", "sam-altman", "dario-amodei", "demis-hassabis"]
-  triads: ["ai", "economics", "systems", "ai-product"]
   cluster: "technology-ai"
   dual_mode: false
 ---

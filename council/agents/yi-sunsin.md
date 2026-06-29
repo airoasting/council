@@ -8,8 +8,6 @@ council:
   figure: Yi Sun-sin
   domain: "Strategy, governance, power / executing under disadvantage"
   polarity: "The one who is prepared wins the fight that cannot be avoided"
-  polarity_pairs: ["sun-tzu", "machiavelli"]
-  triads: ["strategy", "risk", "crisis", "execution", "founder"]
   cluster: "strategy-governance"
   dual_mode: false
 ---

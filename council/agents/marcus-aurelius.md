@@ -8,8 +8,6 @@ council:
   figure: Marcus Aurelius
   domain: "Philosophy and Framing"
   polarity: "Inner governance over outcomes versus seizing external advantage"
-  polarity_pairs: ["sun-tzu"]
-  triads: ["strategy", "ethics", "conflict", "risk", "decision"]
   cluster: "philosophy-framing"
   dual_mode: false
 ---

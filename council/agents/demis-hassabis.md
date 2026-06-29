@@ -8,8 +8,6 @@ council:
   figure: Demis Hassabis
   domain: "Technology and AI / science and research-grounded AGI"
   polarity: "Intelligence is a scientific problem to be solved before it is a commercial one"
-  polarity_pairs: ["altman"]
-  triads: ["ai", "ai-safety", "complexity"]
   cluster: "tech-ai"
   dual_mode: false
 ---

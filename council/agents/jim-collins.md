@@ -8,8 +8,6 @@ council:
   figure: Jim Collins
   domain: "Management and decision-making / the endurance of great companies and discipline"
   polarity: "Greatness is built by accumulated discipline, not by circumstance"
-  polarity_pairs: ["christensen"]
-  triads: ["founder", "strategy", "decision", "systems"]
   cluster: "management-decision"
   dual_mode: false
 ---

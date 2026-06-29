@@ -8,8 +8,6 @@ council:
   figure: Dario Amodei
   domain: "Technology and AI / AI safety, responsible scaling, alignment"
   polarity: "Being able to scale something is not the same as being able to control it"
-  polarity_pairs: ["musk", "altman"]
-  triads: ["ai", "ai-safety", "uncertainty", "risk"]
   cluster: "technology-ai"
   dual_mode: false
 ---

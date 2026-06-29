@@ -8,8 +8,6 @@ council:
   figure: Warren Buffett
   domain: "Capital & Investing / business value and price discipline"
   polarity: "Proven economics far below intrinsic value over unproven futures at a premium"
-  polarity_pairs: ["cathie-wood"]
-  triads: ["economics", "decision"]
   cluster: "capital-investing"
   dual_mode: false
 ---

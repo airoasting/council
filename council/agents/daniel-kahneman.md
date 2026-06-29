@@ -8,8 +8,6 @@ council:
   figure: Daniel Kahneman
   domain: "Management & Decision"
   polarity: "the judgment is the first thing to be doubted, including my own"
-  polarity_pairs: ["drucker", "feynman"]
-  triads: ["decision", "bias"]
   cluster: "management-decision"
   dual_mode: false
 ---

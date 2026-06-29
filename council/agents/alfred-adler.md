@@ -8,8 +8,6 @@ council:
   figure: Alfred Adler
   domain: "Philosophy and framing / teleology and the psychology of relationship"
   polarity: "Behavior is set not by its cause but by the goal the person is moving toward"
-  polarity_pairs: ["aristotle", "marcus-aurelius"]
-  triads: ["framing", "ethics", "decision", "conflict", "founder"]
   cluster: "philosophy-framing"
   dual_mode: false
 ---
