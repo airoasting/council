@@ -27,6 +27,7 @@
 4. `.page-light > #council`(`.block`): 자문단 25인. 영역별 원형 아바타 디스크 그리드.
 5. `.zone-dark > #modes`(`.block`): 토론 모드 5종. 페이퍼 카드 + 노트 알약.
 6. `footer.zone-black`: 풀블리드 블랙. 닫는 문장 + 칩 + 콜로폰.
+7. `#pm`(`.pm-overlay`): 인물 프롬프트 모달. 자문단 카드(`.ccard`)나 원자 노드(`.node`)를 클릭하면 열린다. 좌측 신원 패널(아바타·이름·영문·도메인 칩·한 줄 관점) + 우측 시스템 프롬프트 박스(`.pm-pre`) + 복사하기/MD 다운로드 버튼. footer 뒤에 위치.
 
 > 참고: `.zone-dark` / `.page-light`는 v12에서 모두 본(`--bone`) 배경으로 재정의됐다. 이름만 과거 다크 시절의 잔재다.
 
@@ -71,7 +72,8 @@
 
 ## 인터랙션 / 구현 메모
 
-- 원자(ATOM ORBIT): 도메인당 궤도 1개(총 5개). canvas로 궤도선, DOM `.node`로 점. 점 hover → 캡션 갱신, 클릭 → 해당 자문단 카드로 스크롤 + `.flash`. 히어로가 화면 밖이면 rAF 정지.
+- 원자(ATOM ORBIT): 도메인당 궤도 1개(총 5개). canvas로 궤도선, DOM `.node`로 점. 점 hover → 캡션 갱신, 클릭 → `window.openPersona(gi)`로 인물 모달 열기. 히어로가 화면 밖이면 rAF 정지.
+- 인물 모달: 프롬프트 본문은 `council/agents/*.md` 25개 전문을 빌드 시 `const PROMPTS=[{file,md},...]`로 인라인 임베드한다(PEOPLE 순서 = gi). 단일 HTML 자기완결 유지를 위해 fetch 대신 인라인. 파일 갱신 시 아래 스니펫으로 재주입한다. 복사/MD 다운로드 대상은 그 전문, 다운로드 파일명은 `<file>.md`. 닫기는 ×·배경 클릭·Esc.
 - 회전목마: `#why`를 `460vh`로 키우고 `.cf-pin`을 `position:sticky`로 고정. 스크롤 진행도를 실린더 회전각으로 매핑. 표준 3D carousel 공식(트랙 `translateZ(-R) rotateY(θ)`, 카드 `rotateY(i·θ) translateZ(R)`).
   - sticky가 동작하려면 `body{overflow-x:clip}`이 필요하다(`hidden`은 스크롤 컨테이너를 만들어 sticky를 깬다). 바꾸지 말 것.
   - `scrollToIndex`는 `offsetTop`이 아니라 절대 페이지 좌표(`scrollY + getBoundingClientRect().top`)로 계산한다. 상위에 positioned 요소(`.zone-dark`)가 있어 `offsetTop`은 0이 나오기 때문.
@@ -80,7 +82,8 @@
 
 ## 미리보기 (중요)
 
-- 상위 `.claude/launch.json`의 서버는 라이브 폴더가 아니라 별도 스크래치패드 스냅샷 경로에서 서빙한다. 편집한 `index.html`을 그 경로의 `output/council-landing/index.html`에 복사해야 미리보기에 반영된다.
+- `.claude/launch.json`의 `council` 서버는 라이브 폴더가 아니라 스크래치패드 스냅샷 경로(`...scratchpad/council_snap/`)에서 서빙한다. 편집한 `index.html`과 `assets/`를 그 경로에 복사해야 미리보기에 반영된다(모달 아바타도 `assets/avatar/` 필요).
+- 프롬프트 재주입 스니펫: `index.html`의 `const PROMPTS = [...]`를 다시 만들려면, 25개 슬러그를 PEOPLE 순서대로 두고 각 `council/agents/<slug>.md` 전문을 `{file,md}`로 묶어 `json.dumps(...,ensure_ascii=False)`(JSON은 JS 리터럴) 후 `</`를 `<\/`로 이스케이프해 치환한다.
 - 큰 뷰포트(예: 1280)에서 스크롤한 스크린샷이 검게 잡히는 미리보기 버그가 있다. 검증은 모바일 폭(예: 414)에서 하면 안정적이다.
 - 미리보기 탭이 비활성화되면 CSS 전환이 멈춰 캡처가 흐릴 수 있다. 실제 포커스된 브라우저에서는 정상 동작한다.
 
@@ -90,5 +93,6 @@
 2. `<em>`은 한 헤드라인에 한 곳, 색만.
 3. 카드 라운디드 + 솔리드 잉크 보더 유지.
 4. em dash 0개, 본문 종결 통일.
-5. JS 훅 클래스·id(`.node .pt .nm`, `.cf-card .cf-name .cf-list`, `.ccard .disc .cidx .cname`, `#cf-track #cf-cur #cf-prev`, `#domains #modes-grid`, `.domain` 등) 보존.
-6. 슬라이드 라벨이 아니라 스크롤 페이지다. 슬라이드 덱으로 바꾸지 말 것(과거 요청 오해로 만들었다가 철회함).
+5. JS 훅 클래스·id(`.node .pt .nm`, `.cf-card .cf-name .cf-list`, `.ccard .disc .cidx .cname`, `#cf-track #cf-cur #cf-prev`, `#domains #modes-grid`, `.domain`, 모달 `#pm #pm-img #pm-no #pm-name #pm-en #pm-cat #pm-pol #pm-pre #pm-copy #pm-dl #pm-close`, `window.openPersona`) 보존.
+6. 인물 데이터를 늘리거나 순서를 바꾸면 `PROMPTS` 슬러그 매핑(gi 순서)을 반드시 함께 갱신한다.
+7. 슬라이드 라벨이 아니라 스크롤 페이지다. 슬라이드 덱으로 바꾸지 말 것(과거 요청 오해로 만들었다가 철회함).
