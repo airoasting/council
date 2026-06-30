@@ -5,7 +5,6 @@
   <img src="https://img.shields.io/badge/License-MIT-007ec6" alt="License MIT">
   <img src="https://img.shields.io/badge/Claude%20Code-Skill-8957e5" alt="Claude Code Skill">
   <img src="https://img.shields.io/badge/Experts-25%20Verified-e67e22" alt="25 Experts Verified">
-  <img src="https://img.shields.io/badge/Triads-13-e67e22" alt="13 Triads">
   <img src="https://img.shields.io/badge/Native-Claude%20Code-8957e5" alt="Native Claude Code">
 </p>
 
