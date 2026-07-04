@@ -1,0 +1,87 @@
+<svg viewBox="0 0 1200 630" width="1200" height="630" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="t d">
+  <title id="t">AI ROASTING 25인 자문단</title>
+  <desc id="d">다섯 영역 스물다섯 명의 자문단이 어려운 결정을 반대편에서 토론하는 도구를 소개하는 썸네일.</desc>
+  <style>
+    text{font-family:'Apple SD Gothic Neo','Pretendard','Noto Sans KR','Helvetica Neue',sans-serif;}
+    .label{font-weight:800;letter-spacing:4px;}
+    .h{font-weight:800;letter-spacing:-1px;}
+    .h2{font-weight:800;letter-spacing:-0.5px;}
+    .sub{font-weight:500;}
+    .chip{font-weight:700;}
+  </style>
+
+  <!-- 배경 본 -->
+  <rect x="0" y="0" width="1200" height="630" fill="#E2DCC9"/>
+  <!-- 아카이브 카드 -->
+  <rect x="28" y="28" width="1144" height="574" rx="28" fill="#F4EFE0" stroke="#0A0A0A" stroke-width="6"/>
+
+  <!-- 라벨 알약 -->
+  <rect x="72" y="72" width="196" height="46" rx="23" fill="#0A0A0A"/>
+  <text x="170" y="102" class="label" font-size="21" fill="#E2DCC9" text-anchor="middle">AI ROASTING</text>
+
+  <!-- 주인공: 25인 자문단 -->
+  <text x="70" y="248" class="h" font-size="104"><tspan fill="#EE7A2E">25인</tspan><tspan fill="#0A0A0A"> 자문단</tspan></text>
+
+  <!-- 보조 헤드라인 -->
+  <text x="74" y="316" class="h2" font-size="42" fill="#0A0A0A">어려운 결정을 <tspan fill="#EE7A2E">로스팅</tspan>하다</text>
+
+  <!-- 서브라인 -->
+  <text x="74" y="392" class="sub" font-size="25" fill="#0A0A0A">소크라테스부터 젠슨 황까지, 다섯 영역의 거장들.</text>
+  <text x="74" y="430" class="sub" font-size="25" fill="#0A0A0A">매끈한 한 갈래 답 대신, 반대편에 선 사람들의 토론으로 답합니다.</text>
+
+  <!-- 원자 궤도 (우상단) -->
+  <g>
+    <g transform="rotate(145 980 208)">
+      <ellipse cx="980" cy="208" rx="150" ry="58" fill="none" stroke="#3F73B7" stroke-width="3"/>
+      <circle cx="1130" cy="208" r="10" fill="#3F73B7" stroke="#0A0A0A" stroke-width="2"/>
+    </g>
+    <g transform="rotate(110 980 208)">
+      <ellipse cx="980" cy="208" rx="130" ry="50" fill="none" stroke="#2D7E73" stroke-width="3"/>
+      <circle cx="1110" cy="208" r="10" fill="#2D7E73" stroke="#0A0A0A" stroke-width="2"/>
+    </g>
+    <g transform="rotate(72 980 208)">
+      <ellipse cx="980" cy="208" rx="110" ry="43" fill="none" stroke="#D8A93B" stroke-width="3"/>
+      <circle cx="1090" cy="208" r="10" fill="#D8A93B" stroke="#0A0A0A" stroke-width="2"/>
+    </g>
+    <g transform="rotate(35 980 208)">
+      <ellipse cx="980" cy="208" rx="88" ry="36" fill="none" stroke="#C73B7A" stroke-width="3"/>
+      <circle cx="1068" cy="208" r="10" fill="#C73B7A" stroke="#0A0A0A" stroke-width="2"/>
+    </g>
+    <g transform="rotate(0 980 208)">
+      <ellipse cx="980" cy="208" rx="66" ry="28" fill="none" stroke="#A06A3C" stroke-width="3"/>
+      <circle cx="1046" cy="208" r="10" fill="#A06A3C" stroke="#0A0A0A" stroke-width="2"/>
+    </g>
+    <!-- 핵: 25 -->
+    <circle cx="980" cy="208" r="38" fill="#EE7A2E" stroke="#0A0A0A" stroke-width="4"/>
+    <text x="980" y="221" class="h" font-size="34" fill="#0A0A0A" text-anchor="middle">25</text>
+  </g>
+
+  <!-- 도메인 칩 -->
+  <g class="chip" font-size="23">
+    <g>
+      <rect x="72" y="508" width="150" height="52" rx="26" fill="#F4EFE0" stroke="#0A0A0A" stroke-width="3"/>
+      <circle cx="100" cy="534" r="10" fill="#A06A3C"/>
+      <text x="120" y="542" fill="#0A0A0A">철학</text>
+    </g>
+    <g>
+      <rect x="238" y="508" width="196" height="52" rx="26" fill="#F4EFE0" stroke="#0A0A0A" stroke-width="3"/>
+      <circle cx="266" cy="534" r="10" fill="#C73B7A"/>
+      <text x="286" y="542" fill="#0A0A0A">전략·권력</text>
+    </g>
+    <g>
+      <rect x="450" y="508" width="196" height="52" rx="26" fill="#F4EFE0" stroke="#0A0A0A" stroke-width="3"/>
+      <circle cx="478" cy="534" r="10" fill="#D8A93B"/>
+      <text x="498" y="542" fill="#0A0A0A">경영·결정</text>
+    </g>
+    <g>
+      <rect x="662" y="508" width="176" height="52" rx="26" fill="#F4EFE0" stroke="#0A0A0A" stroke-width="3"/>
+      <circle cx="690" cy="534" r="10" fill="#2D7E73"/>
+      <text x="710" y="542" fill="#0A0A0A">기술·AI</text>
+    </g>
+    <g>
+      <rect x="854" y="508" width="196" height="52" rx="26" fill="#F4EFE0" stroke="#0A0A0A" stroke-width="3"/>
+      <circle cx="882" cy="534" r="10" fill="#3F73B7"/>
+      <text x="902" y="542" fill="#0A0A0A">투자·자산</text>
+    </g>
+  </g>
+</svg>
