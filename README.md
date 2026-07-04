@@ -1,6 +1,10 @@
 # AI ROASTING 자문단
 
 <p align="center">
+  <a href="https://airoasting-council.vercel.app/"><img src="docs/assets/og/council-thumbnail.png" alt="AI ROASTING 25인 자문단" width="820"></a>
+</p>
+
+<p align="center">
   <img src="https://img.shields.io/badge/Version-1.0.0-2ea44f" alt="Version 1.0.0">
   <img src="https://img.shields.io/badge/License-MIT-007ec6" alt="License MIT">
   <img src="https://img.shields.io/badge/Claude%20Code-Skill-8957e5" alt="Claude Code Skill">
