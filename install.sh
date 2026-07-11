@@ -51,7 +51,13 @@ if [[ ! -f "${SCRIPT_DIR}/SKILL.md" ]]; then
   exit 1
 fi
 
-agent_files=("${SCRIPT_DIR}"/agents/*.md)
+# voice-rules.md is a style-rules file, not an agent persona; install it into
+# the skill dir separately (below), never into ~/.claude/agents.
+agent_files=()
+for f in "${SCRIPT_DIR}"/agents/*.md; do
+  [[ "$(basename "${f}")" == "voice-rules.md" ]] && continue
+  agent_files+=("${f}")
+done
 if [[ ${#agent_files[@]} -eq 0 ]]; then
   echo "Error: no agent files found under ${SCRIPT_DIR}/agents" >&2
   exit 1
@@ -72,11 +78,9 @@ done
 echo "Installing /council skill..."
 run_cmd install -m 0644 "${SCRIPT_DIR}/SKILL.md" "${SKILL_DEST}"
 
-if [[ -d "${SCRIPT_DIR}/references" ]]; then
-  run_cmd mkdir -p "${SKILL_DEST_DIR}/references"
-  for ref in "${SCRIPT_DIR}"/references/*.md; do
-    [[ -e "${ref}" ]] && run_cmd install -m 0644 "${ref}" "${SKILL_DEST_DIR}/references/"
-  done
+if [[ -f "${SCRIPT_DIR}/agents/voice-rules.md" ]]; then
+  echo "Installing voice rules..."
+  run_cmd install -m 0644 "${SCRIPT_DIR}/agents/voice-rules.md" "${SKILL_DEST_DIR}/voice-rules.md"
 fi
 
 echo
