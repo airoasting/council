@@ -85,6 +85,7 @@
 | 듀오 | `/council --duo [문제]` | 대척점에 선 두 사람만 붙입니다. 하나의 긴장을 파고들 때 |
 | 트라이어드 | `/council --triad <이름> [문제]` | 문제 유형에 맞춘 세 명을 부릅니다 |
 | 전문가 지정 | `/council --members 이순신,정약용,마키아벨리 [문제]` | 원하는 인물만 부릅니다 |
+| 전체 명시 | `/council --full [문제]` | 기본값과 같습니다. 빠른 모드를 쓰지 않겠다고 못 박을 때 |
 
 미리 정해 둔 트라이어드로는 `strategy`, `crisis`, `governance`, `decision`, `innovation`, `endurance`, `ai`, `ai-infra`, `investing`, `macro`, `ethics`, `framing`, `systems`가 있습니다.
 
