@@ -163,6 +163,26 @@ AI ROASTING의 최종 조언: 가장 센 대립은 "지금 달려라"와 "발판
 - 미해결: 혁신 속도가 소송 속도보다 느리면?
 ```
 
+## 저장소를 고칠 때
+
+25인 정의, 스킬 문서, 웹사이트, README는 서로 물려 있습니다. 한 곳을 고치고 다른 곳을 놓치면 조용히 어긋나므로 정합성 검사를 걸어 두었습니다.
+
+```bash
+git config core.hooksPath .githooks
+```
+
+한 번 실행해 두면 커밋할 때마다 아래 셋이 자동으로 돕니다. GitHub Actions도 같은 셋을 push와 pull request에서 돌립니다.
+
+```bash
+python3 scripts/validate_agents.py   # 25인 정의와 문서 참조 정합성
+python3 scripts/build_docs.py --check # 사이트가 agents/ 와 맞는지
+python3 scripts/sync_docs.py --check  # README 표가 사이트와 맞는지
+```
+
+무엇을 잡는지는 이렇습니다. 파일명과 슬러그 불일치, 필수 섹션 누락, 문서가 옛 섹션 이름을 가리키는 것, SKILL.md 대응표와 `resolve_members.py`의 어긋남, 대립극이 25명을 다 덮지 못하는 것, 줄표, 그리고 사이트와 README의 설명 불일치입니다.
+
+25인 한 줄 설명의 정본은 `docs/index.html`입니다. README 표는 거기서 찍어 내므로 직접 고치지 말고 사이트를 고친 뒤 `scripts/sync_docs.py`를 돌립니다.
+
 ## 라이선스
 
 MIT 라이선스를 따릅니다. 자유롭게 쓰고, 고치고, 배포할 수 있습니다. 자세한 내용은 `LICENSE` 파일에 있습니다.

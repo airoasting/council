@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# 저장소 정합성 게이트. 활성화: git config core.hooksPath .githooks
+set -e
+ROOT="$(git rev-parse --show-toplevel)"
+cd "$ROOT"
+python3 scripts/validate_agents.py
+python3 scripts/build_docs.py --check
+python3 scripts/sync_docs.py --check
