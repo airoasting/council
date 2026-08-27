@@ -97,6 +97,56 @@ def main():
     except Exception as e:  # noqa: BLE001
         errors.append(f"could not import resolve_members.py: {e}")
 
+    # 문서가 에이전트 섹션을 옛 이름으로 가리키면 dispatch 프롬프트가 없는 제목을
+    # 찾게 된다. 섹션 제목을 바꾸고 SKILL.md 를 못 고친 사고가 실제로 났다.
+    RENAMED = {
+        "결정 규칙": "제가 결론을 내리는 법",
+        "환각 방지 규칙": "제가 지어내지 않는 것",
+        "시그니처 질문": "제가 늘 묻는 것",
+        "분석 순서": "제가 따져 보는 순서",
+        "방에 들어서는 자세": "제가 먼저 하는 일",
+    }
+    for doc in ("SKILL.md", "README.md"):
+        dt = (ROOT / doc).read_text(encoding="utf-8") if (ROOT / doc).exists() else ""
+        for old, now in RENAMED.items():
+            if old in dt:
+                errors.append(f"{doc}: refers to renamed agent section '{old}' (now '{now}')")
+
+    # 25인 한 줄 설명은 docs/index.html 이 정본이고 README 표는 거기서 찍어 낸다.
+    try:
+        sys.path.insert(0, str(ROOT / "scripts"))
+        import sync_docs  # noqa: E402
+
+        rt = (ROOT / "README.md").read_text(encoding="utf-8")
+        m = re.search(r"^\| 영역 \|.*?(?=\n\n)", rt, re.S | re.M)
+        if not m:
+            errors.append("README.md: 25인 표를 찾지 못했습니다")
+        elif m.group(0) != sync_docs.build_table():
+            errors.append("README.md 표가 docs/index.html 과 어긋남 (scripts/sync_docs.py 실행)")
+    except SystemExit as e:  # noqa: PERF203
+        errors.append(f"sync_docs.py: {e}")
+    except Exception as e:  # noqa: BLE001
+        errors.append(f"could not check README table: {e}")
+
+    # 저장소 문서 전체에서 em dash 0. (이 파일의 검사 리터럴만 예외)
+    for doc in sorted(ROOT.glob("*.md")) + sorted((ROOT / "docs").glob("*.md")) + sorted(
+        (ROOT / "references").glob("*.md")
+    ):
+        if "—" in doc.read_text(encoding="utf-8"):
+            errors.append(f"{doc.relative_to(ROOT)}: contains em dash")
+
+    # 대립극은 --duo 의 유일한 출처다. 25명을 다 덮지 못하면 못 쓰는 사람이 생긴다.
+    duo_line = next((ln for ln in skill_text.splitlines()
+                     if " / " in ln and "socrates" in ln), "")
+    if not duo_line:
+        errors.append("SKILL.md: 대립극 줄을 찾지 못했습니다")
+    else:
+        paired = {x.strip() for pair in duo_line.split("·") for x in pair.split("/")}
+        for s in sorted(slugs - paired):
+            errors.append(f"SKILL.md 대립극에 '{s}' 가 없어 --duo 로 못 부릅니다")
+        for s in sorted(paired - slugs):
+            errors.append(f"SKILL.md 대립극에 알 수 없는 슬러그 '{s}'")
+
     if errors:
         print("FAIL")
         for e in errors:
@@ -105,7 +155,7 @@ def main():
 
     print(
         f"PASS  {len(agent_files)} agents, names/slugs/sections consistent, "
-        "lookup table and resolve_members in sync, no em dash"
+        "lookup table, resolve_members, README table, duo pairs in sync, no em dash"
     )
     sys.exit(0)
 
