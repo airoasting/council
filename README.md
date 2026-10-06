@@ -1,7 +1,7 @@
 # AI ROASTING 자문단
 
 <p align="center">
-  <a href="https://airoasting-council.vercel.app/"><img src="docs/assets/og/council-thumbnail.png" alt="AI ROASTING 25인 자문단" width="820"></a>
+  <a href="https://council.airoasting.com/"><img src="docs/assets/og/council-thumbnail.png" alt="AI ROASTING 25인 자문단" width="820"></a>
 </p>
 
 <p align="center">
