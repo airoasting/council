@@ -110,7 +110,7 @@ PROGRESS_TERMS_EN = [r"\bround\s*[123]\b", r"\bround (?:one|two|three)\b",
 HEADINGS = {
     "ko": [
         ("glance", "한눈에", True),
-        ("vote", "직답 표결", True),
+        ("vote", "(?:직답 )?표결", True),
         ("unresolved", "아직 안 풀린 질문", True),
         ("split", "서로 엇갈린 지점", True),
         ("agree", "전문가들이 동의한 지점", False),
@@ -1298,6 +1298,7 @@ def check_ask_first(rep, text):
 ANS_HEAD = re.compile(r"^#{2,4}[ \t]*(.+?)[ \t]*[·|][ \t]*(라운드[ \t]*\d|재질문[^\n]*|관문 뒤[^\n]*"
                       r"|Round[ \t]*\d|Re-?ask[^\n]*)[ \t]*$", re.M | re.I)
 CELL_NAMES = [
+    ("orig", r"원래 질문으로는|In the original question|Original question"),
     ("changed", r"(?:라운드 1과 )?달라진 점|What changed"),
     ("answer", r"(?:최종 )?직답|(?:Final )?direct answer"),
     ("label", r"(?:최종 |판정 )?라벨|(?:Final )?(?:verdict )?label"),
@@ -1399,7 +1400,8 @@ def check_answers(rep, blocks, case, labels):
             a = cells["answer"]
             if not options:
                 rep.add("SKIP", "M1", f"{who} 직답", "사례 선택지 없음")
-            elif re.search(ESCAPE_ANSWER, a, re.I):
+            elif re.search(ESCAPE_ANSWER, a, re.I) and not match_option(a, options):
+                # "조건부 인수"처럼 선택지 이름에 "조건부"가 든 경우는 회피 답이 아니다.
                 rep.add("FAIL", "M1", f"{who} 직답이 선택지 안", f"'{a}': 조건부·정보 부족으로 빠짐")
             else:
                 o = match_option(a, options)
