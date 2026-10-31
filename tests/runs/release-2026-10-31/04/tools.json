@@ -1,0 +1,14 @@
+{
+  "tools": {
+    "Glob": 1,
+    "Read": 1,
+    "Agent": 2,
+    "Grep": 1,
+    "ToolSearch": 1,
+    "SendMessage": 2
+  },
+  "subagent_types": {
+    "niccolo-machiavelli": 1,
+    "jeong-yakyong": 1
+  }
+}

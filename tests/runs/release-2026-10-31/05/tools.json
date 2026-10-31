@@ -1,0 +1,16 @@
+{
+  "tools": {
+    "Glob": 1,
+    "Agent": 3,
+    "Read": 1,
+    "Bash": 5,
+    "Grep": 1,
+    "ToolSearch": 1,
+    "SendMessage": 1
+  },
+  "subagent_types": {
+    "peter-drucker": 1,
+    "elon-musk": 1,
+    "nassim-taleb": 1
+  }
+}

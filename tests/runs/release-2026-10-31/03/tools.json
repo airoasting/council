@@ -1,0 +1,13 @@
+{
+  "tools": {
+    "Glob": 1,
+    "Read": 1,
+    "Agent": 3,
+    "ScheduleWakeup": 1
+  },
+  "subagent_types": {
+    "warren-buffett": 1,
+    "cathie-wood": 1,
+    "howard-marks": 1
+  }
+}

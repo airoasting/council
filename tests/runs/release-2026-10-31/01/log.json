@@ -1,0 +1,26 @@
+[
+  {
+    "turn": 0,
+    "sent": "/council --members 클레이튼 크리스텐슨,짐 콜린스,일론 머스크,나심 탈레브,피터 드러커 직원 ",
+    "seconds": 27,
+    "duration_ms": 23647,
+    "total_cost_usd": 0.6609918,
+    "num_turns": 3
+  },
+  {
+    "turn": 1,
+    "sent": "진행",
+    "seconds": 127,
+    "duration_ms": 123163,
+    "total_cost_usd": 1.4909635,
+    "num_turns": 8
+  },
+  {
+    "turn": 2,
+    "sent": "진행",
+    "seconds": 234,
+    "duration_ms": 230026,
+    "total_cost_usd": 2.8689324000000003,
+    "num_turns": 17
+  }
+]

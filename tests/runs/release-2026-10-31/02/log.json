@@ -1,0 +1,18 @@
+[
+  {
+    "turn": 0,
+    "sent": "/council --quick --members 알프레드 아들러,아우렐리우스,마키아벨리,대니얼 카너먼 7년 ",
+    "seconds": 18,
+    "duration_ms": 13596,
+    "total_cost_usd": 0.605543,
+    "num_turns": 2
+  },
+  {
+    "turn": 1,
+    "sent": "진행",
+    "seconds": 148,
+    "duration_ms": 56045,
+    "total_cost_usd": 1.4317684000000002,
+    "num_turns": 2
+  }
+]

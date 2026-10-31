@@ -1,0 +1,15 @@
+{
+  "tools": {
+    "Glob": 1,
+    "Read": 1,
+    "Agent": 4,
+    "ToolSearch": 1,
+    "Grep": 1
+  },
+  "subagent_types": {
+    "alfred-adler": 1,
+    "marcus-aurelius": 1,
+    "niccolo-machiavelli": 1,
+    "daniel-kahneman": 1
+  }
+}

@@ -1,0 +1,18 @@
+[
+  {
+    "turn": 0,
+    "sent": "/council --triad investing --quick 52살이고 퇴직금 3억 원을 받았습니다. 그중",
+    "seconds": 24,
+    "duration_ms": 19135,
+    "total_cost_usd": 0.6203696,
+    "num_turns": 2
+  },
+  {
+    "turn": 1,
+    "sent": "진행",
+    "seconds": 114,
+    "duration_ms": 47783,
+    "total_cost_usd": 1.2878089,
+    "num_turns": 1
+  }
+]

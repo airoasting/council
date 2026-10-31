@@ -1,0 +1,18 @@
+[
+  {
+    "turn": 0,
+    "sent": "/council --duo --members 마키아벨리,정약용 공동창업자 둘이 지분 50:50으로 시작한 지",
+    "seconds": 20,
+    "duration_ms": 14858,
+    "total_cost_usd": 0.6036686,
+    "num_turns": 2
+  },
+  {
+    "turn": 1,
+    "sent": "진행",
+    "seconds": 123,
+    "duration_ms": 42611,
+    "total_cost_usd": 1.3357477,
+    "num_turns": 1
+  }
+]

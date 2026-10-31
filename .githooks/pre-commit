@@ -1,8 +1,14 @@
 #!/usr/bin/env bash
 # 저장소 정합성 게이트. 활성화: git config core.hooksPath .githooks
+# CI(.github/workflows/validate.yml)와 같은 검사를 같은 순서로 돌린다.
 set -e
 ROOT="$(git rev-parse --show-toplevel)"
 cd "$ROOT"
 python3 scripts/validate_agents.py
 python3 scripts/build_docs.py --check
 python3 scripts/sync_docs.py --check
+bash -n install.sh
+# 문법 검사만 한다. 컴파일 산출물은 저장소 밖 임시 폴더에 둔다.
+PYTHONPYCACHEPREFIX="$(mktemp -d)" python3 -m py_compile scripts/*.py
+# 채점기의 선택지 맞추기·숫자 비교 자체 시험. 실행 기록 채점은 하지 않는다(tests/CASES.md).
+python3 scripts/check_run.py --self-test

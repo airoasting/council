@@ -1,0 +1,18 @@
+{
+  "tools": {
+    "Read": 1,
+    "Glob": 1,
+    "Agent": 5,
+    "Grep": 1,
+    "Bash": 6,
+    "ToolSearch": 1,
+    "SendMessage": 10
+  },
+  "subagent_types": {
+    "clayton-christensen": 1,
+    "jim-collins": 1,
+    "elon-musk": 1,
+    "nassim-taleb": 1,
+    "peter-drucker": 1
+  }
+}

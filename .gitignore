@@ -1,0 +1,15 @@
+# 세션/로컬 설정, 잡파일
+.claude/
+.DS_Store
+
+# 파이썬 바이트코드 (scripts/ 를 돌리면 생긴다)
+__pycache__/
+*.pyc
+
+# 토론 누적 기록은 로컬에만 (각자 환경에서 쌓임)
+MEMORY.md
+COUNCIL_LOG.md
+
+# 내부용 문서 (공개 저장소에서 제외)
+CLAUDE.md
+EVALUATION.md

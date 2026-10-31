@@ -25,3 +25,12 @@ jobs:
 
       - name: install.sh 문법
         run: bash -n install.sh
+
+      - name: 파이썬 스크립트 문법
+        run: python3 -m py_compile scripts/*.py
+
+      - name: 채점기 자체 시험
+        run: python3 scripts/check_run.py --self-test
+
+      # 실행 기록 채점(check_run.py <기록>)은 넣지 않는다. 채점 대상인 실행 기록을 사람이 만들기 때문이다.
+      # 릴리스 전 실행 경로와 채점은 tests/CASES.md 를 따른다.
